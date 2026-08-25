@@ -49,18 +49,19 @@
 
 ### Dentro del alcance
 
--
--
--
--
+- Calcula impuestos ingresando los datos del cliente
+- Hace un balance de cuanto dinero tiene prestado el owner y cuánto dinero le está generando
+- Permite hacer un registro manual de cada cliente con su información 
+- Subraya a los clientes que están atrasados en pagos de color rojo y los manda arriba de la lista manteniendo al más atrasado al principio
+- Muestra cuando fue la ultima vez que un cliente hizo un pago
 
 ### Explícitamente fuera del alcance
 
--
--
--
+- No calcula el impuesto de cada cliente por si solo, si no que cuando se necesita saber se ingresan los datos y se calcula
+- No manda un aviso de cuando un cliente se atrasó con el pago
+- El estado de los pagos no se actualiza automáticamente
 
-**Por qué queda fuera:**
+**Por qué queda fuera:** No se actualiza automáticamente porque el sistema no tiene forma de saber que alguien ya pagó, entonces se tiene que actualizar de manera manual porque solo se acepta efectivo en la casa de empeño y no es una página de pagos, y mucho más tiempo y dificultad para automatizar este proceso. 
 
 *Instrucción: para al menos una de las exclusiones, explica la razón. Puede ser tiempo, complejidad, o que no aporta al problema central.*
 
