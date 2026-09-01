@@ -101,7 +101,7 @@
 
 **Alternativa 2:** Cascada
 
-**Por qué la descarté:**
+**Por qué la descarté:** Porque requiere que los requisitos estén definidos y sean estables desde el inicio y en EmpeñoControl pueden surgir cambios conforme el Owner y el Employee prueben el sistema, por lo que es más conveniente utilizar un modelo flexible
 
 ---
 
