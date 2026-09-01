@@ -68,7 +68,7 @@
 
 ## 4. Tipo de sistema y restricciones
 
-**Tipo de sistema:** De información 
+**Tipo de sistema:** De información y a la medida
 
 **Por qué es de ese tipo:** Porque permite registrar, almacenar, consultar y gestionar información de la casa de empeño, como datos de clientes, préstamos, garantías y pagos. También procesa esta información para calcular intereses, llevar el control de adeudos y mostrar el estado de los empeños.
 
