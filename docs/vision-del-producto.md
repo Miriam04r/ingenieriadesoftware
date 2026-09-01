@@ -26,7 +26,7 @@
 
 **El problema:** Al llevarse el control de la casa de empeño de forma manual, han llegado a ocurrir problemas en los cálculos de intereses y en ocasiones no se detecta a tiempo cuando un cliente lleva más de tres meses sin realizar un pago, lo que resulta en pérdidas de dinero. Además, al no contar con un registro digital de los empeños vencidos, si llegara a faltar alguno, sería difícil detectarlo y llevar un control adecuado sobre ellos.
 
-**Cómo se resuelve hoy sin el sistema:** Toda la información se registra en libretas, hojas y anotaciones hechas a mano. Los intereses y refrendos también se calculan manualmente, y el seguimiento de los pagos depende de revisar los registros para saber que clientes han pagado y cuáles tienen adeudos.
+**Cómo se resuelve hoy sin el sistema:** Toda la información se registra en libretas, hojas y anotaciones hechas a mano. Los intereses también se calculan manualmente, y el seguimiento de los pagos depende de revisar los registros para saber que clientes han pagado y cuáles tienen adeudos.
 
 **Usuarios del sistema:**
 
