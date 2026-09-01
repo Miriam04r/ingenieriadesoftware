@@ -51,7 +51,7 @@
 
 - Calcula intereses ingresando los datos del cliente
 - Hace un balance de cuanto dinero tiene prestado el owner y cuánto dinero le está generando
-- Permite hacer un registro manual de cada cliente con su información 
+- Permite hacer un registro manual de cada cliente y empeño con su información correspondiente
 - Subraya a los clientes que están atrasados en pagos de color rojo y los manda arriba de la lista manteniendo al más atrasado al principio
 - Mantiene un historial de las modificaciones realizadas en los registros
 
