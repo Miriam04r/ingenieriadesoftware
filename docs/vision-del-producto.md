@@ -51,7 +51,7 @@
 - Hace un balance de cuanto dinero tiene prestado el owner y cuánto dinero le está generando
 - Permite hacer un registro manual de cada cliente con su información 
 - Subraya a los clientes que están atrasados en pagos de color rojo y los manda arriba de la lista manteniendo al más atrasado al principio
-- Muestra cuando fue la ultima vez que un cliente hizo un pago
+- Mantiene un historial de las modificaciones realizadas en los registros
 
 ### Explícitamente fuera del alcance
 
