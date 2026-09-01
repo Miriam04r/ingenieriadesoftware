@@ -49,7 +49,7 @@
 
 ### Dentro del alcance
 
-- Calcula impuestos ingresando los datos del cliente
+- Calcula intereses ingresando los datos del cliente
 - Hace un balance de cuanto dinero tiene prestado el owner y cuánto dinero le está generando
 - Permite hacer un registro manual de cada cliente con su información 
 - Subraya a los clientes que están atrasados en pagos de color rojo y los manda arriba de la lista manteniendo al más atrasado al principio
