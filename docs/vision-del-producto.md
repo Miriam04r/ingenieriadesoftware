@@ -59,7 +59,7 @@
 - No manda un aviso de cuando un cliente se atrasó con el pago
 - El estado de los pagos no se actualiza automáticamente
 
-**Por qué queda fuera:** No se actualiza automáticamente porque el sistema no tiene forma de saber que alguien ya pagó, entonces se tiene que actualizar de manera manual porque solo se acepta efectivo en la casa de empeño y no es una página de pagos, y mucho más tiempo y dificultad para automatizar este proceso. 
+**Por qué queda fuera:** No se actualiza automáticamente porque el sistema no tiene forma de saber que alguien ya pagó, entonces se tiene que actualizar de manera manual 
 
 ---
 
