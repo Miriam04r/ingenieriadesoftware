@@ -67,27 +67,23 @@
 
 *Instrucción: identifica de qué tipo es tu sistema y qué te obliga a garantizar ese tipo. Un sistema de información y un sistema crítico no se diseñan igual.*
 
-**Tipo de sistema:**
+**Tipo de sistema:** De información 
 
-*(De información · Embebido · Crítico · Web y SaaS · De datos y análisis)*
-
-**Por qué es de ese tipo:**
+**Por qué es de ese tipo:** Porque permite registrar, almacenar, consultar y gestionar información de la casa de empeño, como datos de clientes, préstamos, garantías y pagos. También procesa esta información para calcular intereses, llevar el control de adeudos y mostrar el estado de los empeños.
 
 **Atributos de calidad que impone:**
 
 | Atributo | Por qué importa en mi caso | Qué pasa si no se cumple |
 |---|---|---|
-| | | |
-| | | |
-| | | |
+|Exactitud | El sistema debe realizar correctamente los cálculos de intereses, pagos y refrendos|Se podrían cobrar cantidades incorrectas y generar pérdidas de dinero o problemas con los clientes |
+|Seguridad |La información de clientes, préstamos y dinero debe estar protegida y cada usuario debe tener permisos de acuerdo con su función. |Un empleado podría modificar información que no debería o se podría perder información importante|
+|Integridad de los datos |La información de los clientes, préstamos y pagos debe mantenerse correcta y consistente |Podrían existir registros duplicados, información incorrecta o diferencias entre el dinero registrado y el dinero real |
 
 **Reglas de negocio que ya identifiqué:**
 
-*Instrucción: reglas que no son obvias desde fuera y que alguien que conoce el dominio tendría que explicarte. Si no encuentras ninguna, tu caso puede ser demasiado simple.*
-
-1.
-2.
-3.
+1. Los intereses se calculan proporcionalmente según los días transcurridos
+2. El empeño se considera vencido después de tres meses sin pagar interés 
+3. El cliente puede tener más de un empeño activo a la vez
 
 ---
 
