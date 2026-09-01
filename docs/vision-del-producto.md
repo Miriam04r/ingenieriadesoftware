@@ -65,8 +65,6 @@
 
 ## 4. Tipo de sistema y restricciones
 
-*Instrucción: identifica de qué tipo es tu sistema y qué te obliga a garantizar ese tipo. Un sistema de información y un sistema crítico no se diseñan igual.*
-
 **Tipo de sistema:** De información 
 
 **Por qué es de ese tipo:** Porque permite registrar, almacenar, consultar y gestionar información de la casa de empeño, como datos de clientes, préstamos, garantías y pagos. También procesa esta información para calcular intereses, llevar el control de adeudos y mostrar el estado de los empeños.
