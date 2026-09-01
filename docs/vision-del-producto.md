@@ -39,7 +39,9 @@
 
 **Un conflicto entre usuarios:** El employee puede querer realizar un préstamo de cualquier cantidad para agilizar la atención al cliente, mientras que el Owner quiere tener mayor control sobre los préstamos de cantidades altas. Por ello, cuando un préstamo supere los $50,000 pesos, el sistema requerirá la autorización del Owner antes de completar la operación
 
-
+**Huecos importantes**: 
+- Que pasa si se registra incorrectamente algún dato
+- Que pasa si un cliente nunca vuelve 
 
 ---
 
