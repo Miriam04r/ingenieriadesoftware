@@ -89,23 +89,19 @@
 
 ## 5. Ciclo de vida elegido
 
-*Instrucción: este apartado se trabaja en la semana 3, después de ver los modelos de desarrollo. La justificación pesa más que la elección: no hay un modelo correcto, hay uno defendible para tu caso.*
+**Modelo elegido:** Ágil
 
-**Modelo elegido:**
-
-**Por qué le conviene a este proyecto:**
-
-*Instrucción: argumenta con las características reales de tu caso. Estabilidad de los requisitos, disponibilidad del cliente, nivel de riesgo, tamaño del equipo, frecuencia de entregas esperada.*
+**Por qué le conviene a este proyecto:** Ágil es adecuado para EmpeñoControl porque algunos requisitos pueden cambiar al probar el sistema con el Owner y el Employee. Al ser un proyecto pequeño y con un riesgo principalmente económico, se pueden desarrollar y entregar las funciones por partes, recibir retroalimentación y realizar cambios conforme avance el proyecto
 
 ### Alternativas descartadas
 
-**Alternativa 1:**
+**Alternativa 1:** Prototipado
 
-*Por qué la descarté:*
+**Por qué la descarté:** Porque se enfoca principalmente en validar el diseño y la interacción con el usuario, mientras que EmpeñoControl necesita desarrollar varias funciones completas y mejorarlas progresivamente
 
-**Alternativa 2:**
+**Alternativa 2:** Cascada
 
-*Por qué la descarté:*
+**Por qué la descarté:**
 
 ---
 
