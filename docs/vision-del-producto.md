@@ -45,8 +45,6 @@
 
 ## 3. Alcance
 
-*Instrucción: lo que escribes en "fuera del alcance" es lo que después evita que el proyecto crezca sin control. Sé específico: "reportes" no dice nada, "reportes de ventas mensuales exportables a PDF" sí.*
-
 ### Dentro del alcance
 
 - Calcula impuestos ingresando los datos del cliente
@@ -62,8 +60,6 @@
 - El estado de los pagos no se actualiza automáticamente
 
 **Por qué queda fuera:** No se actualiza automáticamente porque el sistema no tiene forma de saber que alguien ya pagó, entonces se tiene que actualizar de manera manual porque solo se acepta efectivo en la casa de empeño y no es una página de pagos, y mucho más tiempo y dificultad para automatizar este proceso. 
-
-*Instrucción: para al menos una de las exclusiones, explica la razón. Puede ser tiempo, complejidad, o que no aporta al problema central.*
 
 ---
 
