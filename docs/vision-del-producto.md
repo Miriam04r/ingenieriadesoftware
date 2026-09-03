@@ -61,7 +61,7 @@
 - No manda un aviso de cuando un cliente se atrasó con el pago
 - El estado de los pagos no se actualiza automáticamente
 
-**Por qué queda fuera:** No manda un aviso porque no es una función necesaria para el funcionamiento principal del sistema y requeriría implementar un sistema adicional de notificaciones y monitoreo constante de los pagos.
+**Por qué queda fuera:** Esto queda fuera del alcance porque el sistema no puede saber por sí solo si el cliente pagó, ya que los pagos se hacen en efectivo. Por eso, el empleado tiene que registrar manualmente cada pago en el sistema
 
 
 ---
