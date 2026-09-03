@@ -61,7 +61,7 @@
 - No manda un aviso de cuando un cliente se atrasó con el pago
 - El estado de los pagos no se actualiza automáticamente
 
-**Por qué queda fuera:** No calcula los intereses automáticamente porque el monto depende del valor del préstamo y de los días transcurridos desde el último pago, por eso los datos deben ingresarse cuando se necesite realizar el cálculo.
+**Por qué queda fuera:** No manda un aviso porque no es una función necesaria para el funcionamiento principal del sistema y requeriría implementar un sistema adicional de notificaciones y monitoreo constante de los pagos.
 
 
 ---
