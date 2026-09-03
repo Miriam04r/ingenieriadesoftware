@@ -16,7 +16,7 @@
 
 **Nombre del sistema:** EmpeñoControl
 
-**Descripción:** EmpeñoControl será un sistema que ayudará a administrar una casa de empeño, permitiendo registrar clientes, préstamos y objetos dejados como garantía. También llevará el control de pagos, calculará automáticamente los intereses y mostrará que clientes tienen pagos pendientes, cuánto tiempo llevan sin pagar y que empeños ya están vencidos.
+**Descripción:** EmpeñoControl será un sistema que ayudará a administrar una casa de empeño, permitiendo registrar clientes, préstamos y objetos dejados como garantía. También llevará el control de pagos, calculará los intereses y mostrará que clientes tienen pagos pendientes, cuánto tiempo llevan sin pagar y que empeños ya están vencidos.
 
 ---
 
