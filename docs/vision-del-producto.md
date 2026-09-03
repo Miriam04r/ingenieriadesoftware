@@ -92,13 +92,13 @@
 
 **Modelo elegido:** Ágil
 
-**Por qué le conviene a este proyecto:** Ágil es adecuado para EmpeñoControl porque algunos requisitos pueden cambiar al probar el sistema con el Owner y el Employee. Al ser un proyecto pequeño y con un riesgo principalmente económico, se pueden desarrollar y entregar las funciones por partes, recibir retroalimentación y realizar cambios conforme avance el proyecto
+**Por qué le conviene a este proyecto:** Ágil le conviene a EmpeñoControl porque se puede desarrollar el sistema por partes y probar cada función con los usuarios y si al probarla nos dan retroalimentación o necesitan algún cambio, podemos modificarla antes de continuar con la siguiente función y adaptar el sistema a sus necesidades.
 
 ### Alternativas descartadas
 
 **Alternativa 1:** Prototipado
 
-**Por qué la descarté:** Porque se enfoca principalmente en validar el diseño y la interacción con el usuario, mientras que EmpeñoControl necesita desarrollar varias funciones completas y mejorarlas progresivamente
+**Por qué la descarté:** Porque se enfoca principalmente en crear versiones de prueba para validar el diseño y conocer las necesidades del usuario y en este sistema se necesitan desarrollar las funciones completas por partes, probarlas y mejorarlas conforme avanzamos
 
 **Alternativa 2:** Cascada
 
