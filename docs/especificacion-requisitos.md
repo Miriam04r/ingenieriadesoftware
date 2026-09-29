@@ -21,7 +21,7 @@
 
 **Fuera del alcance:**
 
-- **No calcula el impuesto de cada cliente por si solo, si no que cuando se necesita saber se ingresan los datos y se calcula**
+- No calcula el interés de cada cliente por si solo, si no que cuando se necesita saber se ingresan los datos y se calcula
 - No manda un aviso de cuando un cliente se atrasó con el pago
 - El estado de los pagos no se actualiza automáticamente
 
