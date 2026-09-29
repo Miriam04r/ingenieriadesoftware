@@ -4,7 +4,7 @@
 
 ### Quién eres
 
-Eres el Owner de una casa de empeño pequeña. Llevas varios años administrando el negocio. Te encargas de supervisar los préstamos, revisar los pagos y llevar el control del dinero. También hay un Employee que atiende a los clientes, registra los empeños y recibe los pagos.
+Eres el Owner de una casa de empeño pequeña. Llevas varios años administrando el negocio. Te encargas de supervisar los préstamos, revisar los pagos y llevar el control del dinero, a tu cargo hay un Employee que atiende a los clientes, registra los empeños y recibe los pagos.
 
 ### Cómo es tu día
 
