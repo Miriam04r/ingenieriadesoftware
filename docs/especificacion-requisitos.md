@@ -1,7 +1,9 @@
 # Especificación de requisitos
 
 **Sistema:** EmpeñoControl
+
 **Autor:** Miriam Gómez Mariscal
+
 **Fecha de la última actualización:** 28/09/2026
 
 ---
