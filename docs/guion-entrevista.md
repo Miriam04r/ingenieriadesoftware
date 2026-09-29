@@ -4,9 +4,9 @@
 
 ### Quién eres
 
-Eres el **Owner de una casa de empeño pequeña**. Llevas varios años administrando el negocio. Te encargas de supervisar los préstamos, revisar los pagos y llevar el control del dinero.
+Eres el Owner de una casa de empeño pequeña. Llevas varios años administrando el negocio. Te encargas de supervisar los préstamos, revisar los pagos y llevar el control del dinero.
 
-También hay un **Employee** que atiende a los clientes, registra los empeños y recibe los pagos.
+También hay un Employee que atiende a los clientes, registra los empeños y recibe los pagos.
 
 ### Cómo es tu día
 
@@ -19,7 +19,7 @@ Actualmente gran parte de la información se lleva en libretas, hojas y anotacio
 - Un cliente puede tener más de un empeño activo al mismo tiempo.
 - Un empeño se considera vencido después de tres meses sin pagar intereses.
 - Los intereses se calculan de acuerdo con los días transcurridos desde el último pago.
-- Si un préstamo supera los **$50,000 pesos**, el Employee necesita la autorización del Owner antes de completarlo.
+- Si un préstamo supera los $50,000 pesos, el Employee necesita la autorización del Owner antes de completarlo.
 - Los pagos se realizan en efectivo, por lo que el Employee debe registrarlos manualmente.
 - La información de los clientes, préstamos y pagos debe conservarse aunque un cliente deje de acudir al negocio.
 
@@ -129,7 +129,7 @@ Que mantenga un registro de préstamos, empeños y clientes, además de calcular
 - Los intereses se calculan manualmente y esto puede provocar errores y pérdidas de dinero.
 - Es necesario revisar los registros para saber qué clientes tienen pagos pendientes y cuánto tiempo llevan sin pagar.
 - Es difícil llevar un buen control de los empeños vencidos.
-- Los préstamos mayores a **$50,000** requieren autorización del Owner.
+- Los préstamos mayores a $50,000 requieren autorización del Owner.
 - El sistema necesita mantener registros de clientes, préstamos y empeños, además de calcular los intereses automáticamente.
 
 ## Lo que apareció y no esperábamos
