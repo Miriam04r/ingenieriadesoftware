@@ -2,7 +2,6 @@
 
 **Sistema:** EmpeñoControl  
 **Autor:** Miriam Gómez Mariscal  
-**Versión:** 1.0  
 **Fecha de la última actualización:** 28/09/2026  
 
 ---
