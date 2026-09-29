@@ -268,7 +268,108 @@
 
 ## 5. Casos de uso
 
-Pendiente: se trabajan en la semana 7, después de la entrevista. Cada caso de uso se relacionará con los requisitos funcionales que realiza.
+### CU-01 · Registrar un cliente
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Registrar los datos de un nuevo cliente para poder asociarlo con sus empeños y préstamos. |
+| **Precondición** | El usuario ha iniciado sesión en el sistema. |
+| **Escenario principal** | 1. El usuario selecciona la opción para registrar un cliente.<br>2. El sistema muestra el formulario de registro.<br>3. El usuario ingresa el nombre completo, teléfono, dirección y número de identificación oficial.<br>4. El sistema verifica que los datos requeridos estén completos.<br>5. El sistema registra al cliente y lo muestra en la lista de clientes. |
+| **Flujos alternos** | 4a. Falta algún dato: el sistema señala el dato que falta y no permite guardar el registro hasta completarlo. |
+| **Postcondición** | El cliente queda registrado y disponible para asociarlo con un empeño. |
+| **Requisitos que realiza** | RF-001, RNF-USA-001, RNF-CON-003 |
+
+
+### CU-02 · Registrar un empeño
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Registrar un empeño relacionándolo con un cliente, un objeto como garantía y un préstamo. |
+| **Precondición** | El cliente ya está registrado en el sistema. |
+| **Escenario principal** | 1. El usuario busca y selecciona al cliente.<br>2. El sistema muestra los datos del cliente.<br>3. El usuario ingresa la descripción del objeto, el monto del préstamo, la tasa de interés y la fecha del empeño.<br>4. El sistema verifica que los datos requeridos estén completos.<br>5. El sistema registra el empeño como activo.<br>6. El sistema muestra el empeño en la lista correspondiente. |
+| **Flujos alternos** | 3a. El cliente ya tiene otro empeño activo: el sistema permite registrar el nuevo empeño sin cerrar el anterior.<br><br>4a. El préstamo es mayor a $50,000: el sistema deja el préstamo pendiente de autorización del Owner antes de completarlo. |
+| **Postcondición** | El empeño queda registrado y asociado al cliente. Si el préstamo supera los $50,000, queda pendiente de autorización. |
+| **Requisitos que realiza** | RF-002, RF-003, RF-006, RNF-USA-001, RNF-CON-003 |
+
+
+### CU-03 · Registrar un pago de interés
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Registrar manualmente el pago de interés realizado por un cliente y actualizar la información del empeño. |
+| **Precondición** | El cliente y su empeño ya están registrados en el sistema. |
+| **Escenario principal** | 1. El usuario busca y selecciona el empeño del cliente.<br>2. El sistema muestra la información del empeño y la fecha del último pago.<br>3. El usuario ingresa la fecha y el monto del pago recibido.<br>4. El sistema registra el pago.<br>5. El sistema actualiza la fecha del último pago.<br>6. El sistema actualiza la información relacionada con el tiempo sin pagar. |
+| **Flujos alternos** | 3a. El pago no se registra: el sistema conserva la fecha del último pago anterior y el tiempo sin pagar continúa aumentando. |
+| **Postcondición** | El pago queda registrado en el historial del empeño y la fecha del último pago queda actualizada. |
+| **Requisitos que realiza** | RF-004, RF-007, RF-009, RF-011, RNF-CON-002, RNF-CON-003 |
+
+
+### CU-04 · Calcular el interés de un empeño
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Calcular el interés correspondiente a un empeño según los días transcurridos desde el último pago. |
+| **Precondición** | El empeño está registrado y cuenta con los datos necesarios para realizar el cálculo. |
+| **Escenario principal** | 1. El sistema muestra los campos necesarios para realizar el cálculo junto a los registros del cliente.<br>2. El usuario ingresa manualmente los datos del empeño, como el monto, la tasa de interés y los días transcurridos.<br>3. El sistema verifica que los datos ingresados sean válidos.<br>4. El sistema calcula el interés de forma proporcional a los días transcurridos.<br>5. El sistema muestra al usuario el interés calculado. |
+| **Flujos alternos** | 2a. El empeño no tiene pagos anteriores: el sistema utiliza la fecha del empeño para calcular el tiempo transcurrido.<br><br>3a. No hay datos suficientes para realizar el cálculo: el sistema solicita al usuario los datos necesarios antes de mostrar el resultado. |
+| **Postcondición** | El sistema muestra el interés calculado para el empeño sin que el usuario tenga que realizar el cálculo manualmente. |
+| **Requisitos que realiza** | RF-005, RNF-CON-001 |
+
+
+### CU-05 · Autorizar un préstamo mayor a $50,000
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner |
+| **Objetivo** | Autorizar un préstamo mayor a $50,000 para permitir que el empeño pueda completarse. |
+| **Precondición** | Existe un préstamo mayor a $50,000 pendiente de autorización. |
+| **Escenario principal** | 1. El Owner consulta los préstamos pendientes de autorización.<br>2. El sistema muestra la información del préstamo y del empeño.<br>3. El Owner revisa la información.<br>4. El Owner autoriza el préstamo.<br>5. El sistema registra la autorización.<br>6. El sistema permite completar el préstamo. |
+| **Flujos alternos** | 4a. El Owner no autoriza el préstamo: el préstamo permanece pendiente y no se completa. |
+| **Postcondición** | El préstamo queda autorizado y puede completarse, o permanece pendiente si no fue autorizado. |
+| **Requisitos que realiza** | RF-006, RNF-SEG-001 |
+
+
+### CU-06 · Consultar y gestionar empeños
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Consultar los empeños registrados, identificar los que están vencidos y mantener actualizado su estado. |
+| **Precondición** | Existen empeños registrados en el sistema. |
+| **Escenario principal** | 1. El usuario abre la lista de empeños.<br>2. El sistema muestra los empeños registrados.<br>3. El sistema identifica los empeños que llevan más de tres meses sin pagar intereses.<br>4. El sistema marca en rojo los empeños vencidos.<br>5. El sistema coloca los empeños vencidos al principio de la lista, manteniendo al más antiguo primero.<br>6. El usuario puede revisar la información de cada empeño.<br>7. Cuando corresponde, el usuario actualiza el empeño como inactivo o vendido.<br>8. El sistema guarda el nuevo estado del empeño. |
+| **Flujos alternos** | 3a. El empeño todavía no tiene más de tres meses sin pagar: el sistema lo mantiene como activo.<br><br>7a. El cliente continúa con el empeño: el usuario no cambia el estado y el empeño permanece activo. |
+| **Postcondición** | Los empeños se muestran organizados de acuerdo con su estado y los empeños que corresponden quedan identificados como activos, vencidos o vendidos. |
+| **Requisitos que realiza** | RF-007, RF-011, RNF-CON-003 |
+
+
+### CU-07 · Consultar el balance de dinero
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner |
+| **Objetivo** | Consultar cuánto dinero se encuentra prestado y cuánto dinero se ha generado mediante los intereses pagados. |
+| **Precondición** | Existen préstamos o pagos registrados en el sistema. |
+| **Escenario principal** | 1. El Owner abre la sección de balance.<br>2. El sistema consulta los empeños activos y los pagos de intereses registrados.<br>3. El sistema calcula el total de dinero prestado.<br>4. El sistema calcula el total de dinero generado por intereses.<br>5. El sistema muestra ambos balances al Owner. |
+| **Flujos alternos** | 2a. No existen préstamos o pagos registrados: el sistema muestra el balance correspondiente en cero. |
+| **Postcondición** | El Owner puede consultar el total de dinero prestado y el total de dinero generado por intereses. |
+| **Requisitos que realiza** | RF-008, RF-009, RNF-CON-002 |
+
+
+### CU-08 · Modificar un registro y consultar su historial
+
+| **Campo** | **Contenido** |
+|---|---|
+| **Actor principal** | Owner / Employee |
+| **Objetivo** | Corregir información de un cliente, préstamo o pago sin perder el registro de la modificación realizada. |
+| **Precondición** | Existe un registro de cliente, préstamo o pago que necesita ser corregido. |
+| **Escenario principal** | 1. El usuario busca el registro que desea corregir.<br>2. El sistema muestra la información actual.<br>3. El usuario modifica el dato incorrecto.<br>4. El sistema guarda el nuevo valor.<br>5. El sistema registra el valor anterior, el valor nuevo, la fecha y el usuario que realizó la modificación.<br>6. El usuario puede consultar el historial de modificaciones del registro. |
+| **Flujos alternos** | 3a. El usuario no realiza ningún cambio: el sistema conserva la información original.<br><br>5a. Se intenta modificar una entrada del historial: el sistema no permite modificar ni eliminar la entrada registrada. |
+| **Postcondición** | El registro queda corregido y el historial conserva la información anterior y la nueva, junto con la fecha y el usuario que realizó el cambio. |
+| **Requisitos que realiza** | RF-010, RNF-SEG-002, RNF-CON-003 |
 
 ---
 
