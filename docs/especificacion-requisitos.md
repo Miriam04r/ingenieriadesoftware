@@ -14,20 +14,19 @@
 
 Este documento define los requisitos funcionales y no funcionales del sistema EmpeñoControl. Su objetivo es establecer qué debe hacer el sistema y qué características debe tener para facilitar el control de los clientes, préstamos, empeños, pagos e intereses de una casa de empeño pequeña.
 
-### Alcance del sistema
+### Dentro del alcance
 
-El sistema permitirá registrar y consultar información de clientes, préstamos, empeños y pagos. También permitirá calcular los intereses de los empeños de acuerdo con los días transcurridos, consultar deudas activas y distinguir entre empeños activos e inactivos.
+- Calcula intereses ingresando los datos del cliente
+- Hace un balance de cuanto dinero tiene prestado el owner y cuánto dinero le está generando
+- Permite hacer un registro manual de cada cliente y empeño con su información correspondiente
+- Subraya a los empeños que están vencidos de color rojo y los manda arriba de la lista manteniendo al más antiguo al principio
+- Mantiene un historial de las modificaciones realizadas en los registros
 
-El sistema será utilizado por el Owner y el Employee para facilitar el registro y control de las operaciones de la casa de empeño.
+### Explícitamente fuera del alcance
 
-### Fuera del alcance
-
-- El sistema no calculará por sí solo la tasa de interés que debe aplicarse a un préstamo.
-- El sistema no realizará cobros automáticamente.
-- El sistema no enviará alertas automáticas a los clientes.
-- El sistema no manejará pagos con tarjeta o transferencias.
-- El sistema no realizará procesos fiscales o contables.
-- El sistema no realizará automáticamente la venta de los empeños vencidos.
+- No calcula el impuesto de cada cliente por si solo, si no que cuando se necesita saber se ingresan los datos y se calcula
+- No manda un aviso de cuando un cliente se atrasó con el pago
+- El estado de los pagos no se actualiza automáticamente
 
 ---
 
