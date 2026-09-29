@@ -1,306 +1,287 @@
 # Especificación de requisitos
 
-**Sistema:** EmpeñoControl  
-**Autor:** Miriam Gómez Mariscal  
-**Fecha de la última actualización:** 28/09/2026  
+**Sistema:** EmpeñoControl
+**Autor:** Miriam Gómez Mariscal
+**Fecha de la última actualización:** 28/09/2026
 
 ---
 
 ## 1. Propósito y alcance
 
-### Propósito del documento
+**Propósito del documento:**
 
-Este documento define los requisitos funcionales y no funcionales del sistema EmpeñoControl. Su objetivo es establecer qué debe hacer el sistema y qué características debe tener para facilitar el control de los clientes, préstamos, empeños, pagos e intereses de una casa de empeño pequeña.
+Este documento define los requisitos funcionales y no funcionales del sistema EmpeñoControl. Está dirigido a las personas involucradas en el desarrollo y revisión del sistema, principalmente al Owner y al Employee de la casa de empeño. Su objetivo es establecer de manera clara qué debe hacer el sistema y cuáles son las características que debe cumplir.
 
-### Alcance del sistema
+**Alcance del sistema:**
 
-El sistema permitirá registrar y consultar información de clientes, préstamos, empeños y pagos. También permitirá calcular los intereses de los empeños de acuerdo con los días transcurridos, consultar deudas activas y distinguir entre empeños activos e inactivos.
+EmpeñoControl permitirá registrar y consultar clientes, préstamos o empeños, objetos dejados como garantía y pagos realizados. También permitirá calcular los intereses de acuerdo con los días transcurridos desde el último pago, consultar adeudos y refrendos, e identificar los empeños que llevan más de tres meses sin pago.
 
-El sistema será utilizado por el Owner y el Employee para facilitar el registro y control de las operaciones de la casa de empeño.
+El sistema tendrá dos tipos de usuario: Owner y Employee. El Owner podrá supervisar la información y autorizar operaciones mayores a $50,000. El Employee podrá realizar las operaciones permitidas para el registro y seguimiento de los empeños.
 
-### Fuera del alcance
+El sistema también conservará un historial de modificaciones para poder identificar cambios realizados sobre la información registrada.
 
-- El sistema no calculará por sí solo la tasa de interés que debe aplicarse a un préstamo.
-- El sistema no realizará cobros automáticamente.
-- El sistema no enviará alertas automáticas a los clientes.
-- El sistema no manejará pagos con tarjeta o transferencias.
-- El sistema no realizará procesos fiscales o contables.
-- El sistema no realizará automáticamente la venta de los empeños vencidos.
+**Fuera del alcance:**
+
+* El sistema no determinará automáticamente la tasa de interés; esta deberá ser proporcionada de acuerdo con las reglas del negocio.
+* El sistema no realizará cobros automáticos ni enviará alertas de pago.
+* El sistema no procesará pagos con tarjeta ni transferencias bancarias; los pagos considerados serán en efectivo.
+* El sistema no realizará cálculos fiscales o contables.
+* El sistema no realizará automáticamente la venta de los objetos de empeños vencidos.
+* El sistema no actualizará automáticamente el estado de pago de un cliente sin que se registre la operación correspondiente.
 
 ---
 
 ## 2. Usuarios y su contexto
 
-| Usuario | Qué hace hoy sin el sistema | Qué espera del sistema |
-| ------- | --------------------------- | ---------------------- |
-| Owner | Revisa los empeños activos, pagos, deudas y empeños vencidos. Registra información en libretas y fichas. | Tener control de clientes, préstamos, empeños y pagos, consultar deudas y revisar los empeños vencidos. |
-| Employee | Atiende clientes, registra empeños y recibe pagos. Actualmente registra la información manualmente. | Registrar clientes, préstamos, empeños y pagos de manera sencilla y consultar la información necesaria. |
+| Usuario      | Qué hace hoy sin el sistema                                                                                                                                                   | Qué espera del sistema                                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Owner**    | Supervisa los préstamos, pagos, clientes y objetos dejados como garantía. Actualmente la información se registra en libretas o fichas y los cálculos se realizan manualmente. | Consultar la información de los empeños, supervisar las operaciones, conservar un historial de cambios y autorizar operaciones mayores a $50,000.                                |
+| **Employee** | Registra clientes, préstamos, objetos y pagos manualmente. También realiza los cálculos de intereses y revisa los adeudos.                                                    | Registrar las operaciones de forma sencilla, consultar la información de los clientes y empeños y obtener los cálculos de intereses y adeudos sin depender de cálculos manuales. |
 
-### Conflictos identificados entre usuarios
+**Conflictos identificados entre usuarios:**
 
-El Owner necesita mantener control sobre las operaciones y autorizar los préstamos mayores a $50,000 pesos, mientras que el Employee necesita poder registrar los préstamos y pagos para atender a los clientes.
+El Owner necesita tener control sobre la información y evitar que un Employee modifique o elimine datos incorrectamente. Por esta razón, las operaciones mayores a $50,000 requieren autorización del Owner y el sistema debe conservar un historial de modificaciones.
 
----
-
-## 3. Requisitos funcionales
-
-### 3.1 Resumen
-
-| ID | Nombre | Prioridad | Origen |
-| --- | --- | --- | --- |
-| RF-001 | Registro de clientes | Imprescindible | Entrevista |
-| RF-002 | Registro de préstamos y empeños | Imprescindible | Entrevista |
-| RF-003 | Registro de pagos | Imprescindible | Entrevista |
-| RF-004 | Cálculo de intereses | Imprescindible | Entrevista |
-| RF-005 | Consulta de empeños y deudas | Imprescindible | Entrevista |
-| RF-006 | Control de empeños vencidos | Imprescindible | Entrevista |
-| RF-007 | Autorización de préstamos mayores a $50,000 | Imprescindible | Entrevista |
-| RF-008 | Registro de cambios en la información | Importante | Entrevista |
-
-### 3.2 Fichas
-
-#### RF-001 · Registro de clientes
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá registrar y consultar la información de los clientes de la casa de empeño. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al registrar un cliente con la información requerida, el sistema deberá guardar sus datos y permitir consultarlos posteriormente. |
-| **Relacionado con** | RF-002, RF-005 |
-
-#### RF-002 · Registro de préstamos y empeños
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá registrar préstamos y los objetos que quedan como garantía del préstamo. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al registrar un préstamo con los datos requeridos y su objeto de garantía, el sistema deberá guardar la información y relacionarla con el cliente correspondiente. |
-| **Relacionado con** | RF-001, RF-004, RF-006, RF-007 |
-
-#### RF-003 · Registro de pagos
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá registrar los pagos realizados por los clientes y asociarlos con el empeño correspondiente. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al registrar un pago válido, el sistema deberá guardarlo y mostrarlo asociado al empeño correspondiente. |
-| **Relacionado con** | RF-002, RF-004, RF-005 |
-
-#### RF-004 · Cálculo de intereses
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema calculará los intereses de un empeño de acuerdo con los días transcurridos desde el último pago y la información registrada del préstamo. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al consultar un empeño, el sistema deberá mostrar el interés correspondiente de acuerdo con los días transcurridos desde el último pago. |
-| **Relacionado con** | RF-002, RF-003, RF-005 |
-
-#### RF-005 · Consulta de empeños y deudas
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá consultar los empeños activos, los pagos realizados y las deudas pendientes de los clientes. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al consultar un cliente, el sistema deberá mostrar sus empeños, pagos registrados y deudas pendientes. |
-| **Relacionado con** | RF-001, RF-002, RF-003, RF-004, RF-006 |
-
-#### RF-006 · Control de empeños vencidos
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá identificar los empeños que llevan más de tres meses sin pagar intereses y distinguirlos de los empeños activos. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Cuando un empeño tenga más de tres meses sin registrar un pago de intereses, el sistema deberá permitir identificarlo como vencido o inactivo. |
-| **Relacionado con** | RF-003, RF-005 |
-
-#### RF-007 · Autorización de préstamos mayores a $50,000
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema deberá solicitar la autorización del Owner antes de completar un préstamo mayor a $50,000 pesos cuando sea registrado por el Employee. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Si el Employee intenta registrar un préstamo mayor a $50,000 pesos, el sistema deberá solicitar la autorización del Owner antes de completar el registro. |
-| **Relacionado con** | RF-002 |
-
-#### RF-008 · Registro de cambios en la información
-
-| Campo | Contenido |
-| --- | --- |
-| **Descripción** | El sistema permitirá conservar un registro de las modificaciones realizadas en la información de clientes, préstamos y pagos para poder revisar cambios anteriores. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Importante |
-| **Criterio de aceptación** | Cuando se modifique información de un cliente, préstamo o pago, el sistema deberá conservar el registro del cambio para permitir su revisión posterior. |
-| **Relacionado con** | RF-001, RF-002, RF-003 |
+El Employee necesita realizar las operaciones de manera rápida y sencilla, por lo que el sistema debe permitirle registrar y consultar la información necesaria para atender a los clientes sin agregar procesos innecesarios.
 
 ---
 
-## 4. Requisitos no funcionales
+# 3. Requisitos funcionales
 
-### 4.1 Resumen
+## 3.1 Resumen
 
-| ID | Atributo | Nombre | Prioridad | Origen |
-| --- | --- | --- | --- | --- |
-| RNF-REN-001 | Rendimiento | Tiempo de consulta | Importante | Derivado del tipo de sistema |
-| RNF-SEG-001 | Seguridad | Control de acceso | Imprescindible | Entrevista |
-| RNF-USA-001 | Usabilidad | Facilidad de uso | Imprescindible | Entrevista |
-| RNF-CON-001 | Confiabilidad | Conservación de información | Imprescindible | Entrevista |
-
-### 4.2 Fichas
-
-#### RNF-REN-001 · Tiempo de consulta
-
-| Campo | Contenido |
-| --- | --- |
-| **Atributo de calidad** | Rendimiento |
-| **Descripción** | El sistema deberá mostrar la información solicitada por el usuario en un tiempo máximo de 3 segundos. |
-| **Métrica** | Tiempo entre la solicitud de una consulta y la visualización de los resultados. |
-| **Origen** | Derivado del tipo de sistema: sistema de información con consultas frecuentes durante la atención a clientes. |
-| **Prioridad** | Importante |
-| **Por qué importa** | El Owner y el Employee necesitan consultar rápidamente la información de los clientes, préstamos y pagos durante la atención. |
-| **Afecta a** | RF-001, RF-002, RF-003, RF-005, RF-006 |
-
-#### RNF-SEG-001 · Control de acceso
-
-| Campo | Contenido |
-| --- | --- |
-| **Atributo de calidad** | Seguridad |
-| **Descripción** | El sistema deberá permitir diferenciar el acceso del Owner y del Employee de acuerdo con sus funciones. |
-| **Métrica** | El 100% de las funciones que requieran autorización del Owner deberán solicitarla antes de completar la operación. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Por qué importa** | El Owner necesita mantener control sobre operaciones importantes, como los préstamos mayores a $50,000. |
-| **Afecta a** | RF-007, RF-008 |
-
-#### RNF-USA-001 · Facilidad de uso
-
-| Campo | Contenido |
-| --- | --- |
-| **Atributo de calidad** | Usabilidad |
-| **Descripción** | El sistema deberá ser fácil de utilizar para el Owner y el Employee durante las actividades diarias de la casa de empeño. |
-| **Métrica** | Un usuario deberá poder registrar un cliente, préstamo o pago sin requerir asistencia externa después de recibir una explicación básica del sistema. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Por qué importa** | Tanto el Owner como el Employee utilizarán el sistema para registrar información y atender a los clientes. |
-| **Afecta a** | RF-001, RF-002, RF-003, RF-005 |
-
-#### RNF-CON-001 · Conservación de información
-
-| Campo | Contenido |
-| --- | --- |
-| **Atributo de calidad** | Confiabilidad |
-| **Descripción** | El sistema deberá conservar la información registrada de clientes, préstamos, empeños y pagos aunque el cliente deje de acudir al negocio. |
-| **Métrica** | La información registrada deberá permanecer disponible después de cerrar y volver a abrir el sistema. |
-| **Origen** | Entrevista con el Owner. |
-| **Prioridad** | Imprescindible |
-| **Por qué importa** | La información histórica es necesaria para consultar los préstamos, pagos y deudas de los clientes. |
-| **Afecta a** | RF-001, RF-002, RF-003, RF-005, RF-006, RF-008 |
+| ID     | Nombre                                        | Prioridad      | Origen                           |
+| ------ | --------------------------------------------- | -------------- | -------------------------------- |
+| RF-001 | Registro de clientes                          | Imprescindible | Visión del producto + entrevista |
+| RF-002 | Registro de préstamos y garantías             | Imprescindible | Visión del producto + entrevista |
+| RF-003 | Registro de pagos                             | Imprescindible | Visión del producto + entrevista |
+| RF-004 | Cálculo de intereses                          | Imprescindible | Entrevista                       |
+| RF-005 | Consulta de adeudos y refrendos               | Imprescindible | Visión del producto + entrevista |
+| RF-006 | Identificación de empeños vencidos            | Imprescindible | Entrevista                       |
+| RF-007 | Autorización de operaciones mayores a $50,000 | Imprescindible | Entrevista                       |
+| RF-008 | Historial de modificaciones                   | Importante     | Entrevista                       |
 
 ---
 
-## 5. Casos de uso
+## 3.2 Fichas
 
-### CU-01 · Registrar cliente
+### RF-001 · Registro de clientes
 
-**Actor principal:** Owner / Employee
+| Campo                      | Contenido                                                                                                                                                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema registra la información necesaria de cada cliente y permite consultarla posteriormente.                                                                                                                          |
+| **Origen**                 | Visión del producto + entrevista de elicitación.                                                                                                                                                                            |
+| **Prioridad**              | Imprescindible                                                                                                                                                                                                              |
+| **Criterio de aceptación** | Al registrar un cliente con los datos requeridos, el sistema guarda la información y permite consultarla posteriormente. Si falta un dato obligatorio, el sistema no permite guardar el registro e indica el dato faltante. |
+| **Relacionado con**        | RF-002, RF-003, RF-005, RNF-USA-001, RNF-INT-001                                                                                                                                                                            |
 
-**Descripción:** Permite registrar la información de un nuevo cliente.
+### RF-002 · Registro de préstamos y garantías
 
-**Requisitos relacionados:** RF-001.
+| Campo                      | Contenido                                                                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema registra un préstamo asociado a un cliente y registra el objeto entregado como garantía del préstamo.                                  |
+| **Origen**                 | Visión del producto + entrevista de elicitación.                                                                                                  |
+| **Prioridad**              | Imprescindible                                                                                                                                    |
+| **Criterio de aceptación** | Al registrar un préstamo con su cliente, monto, fecha y garantía, el sistema guarda la información y la relaciona con el cliente correspondiente. |
+| **Relacionado con**        | RF-001, RF-004, RF-005, RF-006, RF-007, RNF-INT-001                                                                                               |
 
-### CU-02 · Registrar préstamo y empeño
+### RF-003 · Registro de pagos
 
-**Actor principal:** Owner / Employee
+| Campo                      | Contenido                                                                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema registra los pagos realizados sobre un empeño, incluyendo la fecha y el monto pagado.                                              |
+| **Origen**                 | Visión del producto + entrevista de elicitación.                                                                                              |
+| **Prioridad**              | Imprescindible                                                                                                                                |
+| **Criterio de aceptación** | Al registrar un pago con fecha y monto válidos, el sistema lo guarda asociado al empeño correspondiente y permite consultarlo posteriormente. |
+| **Relacionado con**        | RF-002, RF-004, RF-005, RF-006, RNF-INT-001                                                                                                   |
 
-**Descripción:** Permite registrar un préstamo y el objeto que queda como garantía.
+### RF-004 · Cálculo de intereses
 
-**Requisitos relacionados:** RF-002, RF-007.
+| Campo                      | Contenido                                                                                                                                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema calcula los intereses de un empeño de acuerdo con la tasa registrada y los días transcurridos desde el último pago.                                                                                                               |
+| **Origen**                 | Entrevista de elicitación.                                                                                                                                                                                                                   |
+| **Prioridad**              | Imprescindible                                                                                                                                                                                                                               |
+| **Criterio de aceptación** | Al consultar un empeño, el sistema calcula los intereses utilizando la tasa registrada y los días transcurridos desde el último pago. El resultado debe corresponder al número de días transcurridos y no asumir un periodo fijo de 30 días. |
+| **Relacionado con**        | RF-002, RF-003, RF-005, RF-006, RNF-EXA-001                                                                                                                                                                                                  |
 
-### CU-03 · Registrar pago
+### RF-005 · Consulta de adeudos y refrendos
 
-**Actor principal:** Owner / Employee
+| Campo                      | Contenido                                                                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema permite consultar el adeudo de un empeño y los refrendos registrados.                                                              |
+| **Origen**                 | Visión del producto + entrevista de elicitación.                                                                                              |
+| **Prioridad**              | Imprescindible                                                                                                                                |
+| **Criterio de aceptación** | Al consultar un empeño, el sistema muestra el saldo o adeudo correspondiente y permite identificar los refrendos registrados para ese empeño. |
+| **Relacionado con**        | RF-002, RF-003, RF-004, RF-006, RNF-REN-001, RNF-USA-001                                                                                      |
 
-**Descripción:** Permite registrar un pago realizado por un cliente y asociarlo con su empeño.
+### RF-006 · Identificación de empeños vencidos
 
-**Requisitos relacionados:** RF-003, RF-004.
+| Campo                      | Contenido                                                                                                                                                        |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema identifica los empeños que tienen más de tres meses sin registrar un pago.                                                                            |
+| **Origen**                 | Entrevista de elicitación.                                                                                                                                       |
+| **Prioridad**              | Imprescindible                                                                                                                                                   |
+| **Criterio de aceptación** | Cuando un empeño tiene más de tres meses sin un pago registrado, el sistema lo identifica como vencido y permite consultarlo en el registro de empeños vencidos. |
+| **Relacionado con**        | RF-003, RF-005, RF-008, RNF-EXA-001                                                                                                                              |
 
-### CU-04 · Consultar información de cliente
+### RF-007 · Autorización de operaciones mayores a $50,000
 
-**Actor principal:** Owner / Employee
+| Campo                      | Contenido                                                                                                                                                                                                  |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema solicita autorización del Owner antes de completar una operación cuyo monto sea mayor a $50,000.                                                                                                |
+| **Origen**                 | Entrevista de elicitación.                                                                                                                                                                                 |
+| **Prioridad**              | Imprescindible                                                                                                                                                                                             |
+| **Criterio de aceptación** | Cuando una operación supera los $50,000, el sistema no permite completarla hasta que el Owner proporcione la autorización correspondiente. Una operación de $50,000 o menos no requiere esta autorización. |
+| **Relacionado con**        | RF-002, RNF-SEG-001, RNF-INT-001                                                                                                                                                                           |
 
-**Descripción:** Permite consultar los empeños, pagos y deudas asociadas a un cliente.
+### RF-008 · Historial de modificaciones
 
-**Requisitos relacionados:** RF-001, RF-005.
-
-### CU-05 · Consultar empeños vencidos
-
-**Actor principal:** Owner
-
-**Descripción:** Permite consultar los empeños que llevan más de tres meses sin pagar intereses.
-
-**Requisitos relacionados:** RF-005, RF-006.
-
-### CU-06 · Autorizar préstamo mayor a $50,000
-
-**Actor principal:** Owner
-
-**Descripción:** Permite al Owner autorizar un préstamo mayor a $50,000 pesos registrado por el Employee.
-
-**Requisitos relacionados:** RF-007.
-
-### CU-07 · Consultar historial de cambios
-
-**Actor principal:** Owner
-
-**Descripción:** Permite revisar los cambios realizados en la información de clientes, préstamos y pagos.
-
-**Requisitos relacionados:** RF-008.
-
----
-
-## 6. Trazabilidad
-
-| Requisito | Origen | Caso de uso | Elemento del prototipo |
-| --- | --- | --- | --- |
-| RF-001 | Entrevista | CU-01 Registrar cliente | Pantalla de clientes |
-| RF-002 | Entrevista | CU-02 Registrar préstamo y empeño | Pantalla de préstamos |
-| RF-003 | Entrevista | CU-03 Registrar pago | Pantalla de pagos |
-| RF-004 | Entrevista | CU-03 Registrar pago | Cálculo de intereses |
-| RF-005 | Entrevista | CU-04 Consultar información de cliente | Pantalla de consulta |
-| RF-006 | Entrevista | CU-05 Consultar empeños vencidos | Pantalla de empeños vencidos |
-| RF-007 | Entrevista | CU-06 Autorizar préstamo mayor a $50,000 | Pantalla de autorización |
-| RF-008 | Entrevista | CU-07 Consultar historial de cambios | Pantalla de historial |
-| RNF-REN-001 | Derivado del tipo de sistema | CU-04 Consultar información de cliente | Pantallas de consulta |
-| RNF-SEG-001 | Entrevista | CU-06 Autorizar préstamo mayor a $50,000 | Control de acceso |
-| RNF-USA-001 | Entrevista | CU-01, CU-02, CU-03 | Interfaz del sistema |
-| RNF-CON-001 | Entrevista | CU-04, CU-05, CU-07 | Base de datos / almacenamiento |
-
----
-
-## 7. Registro de cambios
-
-| Fecha | Requisito | Qué cambió | Por qué |
-| --- | --- | --- | --- |
-| 28/09/2026 | RF-001 a RF-008 | Se agregaron los requisitos funcionales obtenidos de la entrevista. | Se realizó la entrevista con el Owner y se identificaron las funciones principales del sistema. |
-| 28/09/2026 | RNF-REN-001 a RNF-CON-001 | Se agregaron requisitos no funcionales relacionados con rendimiento, seguridad, usabilidad y confiabilidad. | Se identificaron las características necesarias para el funcionamiento del sistema. |
+| Campo                      | Contenido                                                                                                                                                                               |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Descripción**            | El sistema conserva un historial de las modificaciones realizadas sobre la información registrada.                                                                                      |
+| **Origen**                 | Entrevista de elicitación.                                                                                                                                                              |
+| **Prioridad**              | Importante                                                                                                                                                                              |
+| **Criterio de aceptación** | Cuando un usuario modifica información registrada, el sistema conserva el registro de la modificación indicando al menos el usuario que realizó el cambio y la fecha en que se realizó. |
+| **Relacionado con**        | RF-001, RF-002, RF-003, RF-006, RF-007, RNF-INT-001                                                                                                                                     |
 
 ---
 
-## Antes de entregar
+# 4. Requisitos no funcionales
 
-- [x] Todos los requisitos tienen identificador único y ninguno está repetido.
-- [x] Cada requisito expresa una sola idea.
-- [x] Cada requisito funcional tiene criterio de aceptación comprobable.
-- [x] Cada requisito no funcional tiene una métrica.
-- [x] El campo Origen distingue los requisitos obtenidos de la entrevista de los derivados.
-- [x] Hay requisitos no funcionales para los atributos de calidad identificados.
-- [x] Ningún requisito impone una solución técnica específica.
-- [x] Todos los requisitos caben dentro del alcance declarado.
-- [x] La tabla de trazabilidad está completa.
-- [ ] La dupla revisó el documento y su revisión está registrada.
+## 4.1 Resumen
+
+| ID          | Atributo            | Nombre                           | Prioridad      | Origen                       |
+| ----------- | ------------------- | -------------------------------- | -------------- | ---------------------------- |
+| RNF-REN-001 | Rendimiento         | Tiempo de consulta               | Importante     | Derivado del tipo de sistema |
+| RNF-SEG-001 | Seguridad           | Acceso por usuario               | Imprescindible | Entrevista                   |
+| RNF-USA-001 | Usabilidad          | Facilidad de registro y consulta | Imprescindible | Entrevista                   |
+| RNF-EXA-001 | Exactitud           | Exactitud de cálculos            | Imprescindible | Entrevista                   |
+| RNF-INT-001 | Integridad de datos | Conservación de información      | Imprescindible | Entrevista                   |
+
+---
+
+## 4.2 Fichas
+
+### RNF-REN-001 · Tiempo de consulta
+
+| Campo                   | Contenido                                                                                                                         |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Atributo de calidad** | Rendimiento                                                                                                                       |
+| **Descripción**         | El sistema debe mostrar la información solicitada de clientes, préstamos o empeños en un tiempo máximo de tres segundos.          |
+| **Métrica**             | Tiempo transcurrido entre la solicitud de una consulta y la visualización de los resultados, con hasta 500 registros almacenados. |
+| **Origen**              | Derivado del tipo de sistema: sistema de información utilizado para consultas durante la operación de la casa de empeño.          |
+| **Prioridad**           | Importante                                                                                                                        |
+| **Por qué importa**     | Las consultas se realizan durante la atención a los clientes, por lo que una respuesta lenta dificultaría el uso del sistema.     |
+| **Afecta a**            | RF-001, RF-002, RF-005, RF-006                                                                                                    |
+
+### RNF-SEG-001 · Acceso por usuario
+
+| Campo                   | Contenido                                                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Atributo de calidad** | Seguridad                                                                                                                                       |
+| **Descripción**         | El sistema debe solicitar identificación de usuario antes de permitir el acceso a la información de clientes, préstamos y pagos.                |
+| **Métrica**             | 100% de los accesos a información protegida deben requerir una sesión de usuario válida.                                                        |
+| **Origen**              | Entrevista de elicitación.                                                                                                                      |
+| **Prioridad**           | Imprescindible                                                                                                                                  |
+| **Por qué importa**     | La información de los clientes y las operaciones de la casa de empeño debe estar protegida y solo debe ser modificada por usuarios autorizados. |
+| **Afecta a**            | RF-001, RF-002, RF-003, RF-007, RF-008                                                                                                          |
+
+### RNF-USA-001 · Facilidad de registro y consulta
+
+| Campo                   | Contenido                                                                                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Atributo de calidad** | Usabilidad                                                                                                                                                           |
+| **Descripción**         | El sistema debe permitir que el Employee registre y consulte clientes, préstamos y pagos sin necesitar conocimientos técnicos adicionales.                           |
+| **Métrica**             | El Employee debe poder completar un registro de cliente, préstamo o pago después de una capacitación inicial de máximo 30 minutos, sin asistencia del desarrollador. |
+| **Origen**              | Entrevista de elicitación.                                                                                                                                           |
+| **Prioridad**           | Imprescindible                                                                                                                                                       |
+| **Por qué importa**     | El Employee realiza las operaciones diariamente y actualmente utiliza registros manuales, por lo que el sistema debe ser sencillo de utilizar.                       |
+| **Afecta a**            | RF-001, RF-002, RF-003, RF-005                                                                                                                                       |
+
+### RNF-EXA-001 · Exactitud de cálculos
+
+| Campo                   | Contenido                                                                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Atributo de calidad** | Exactitud                                                                                                                                               |
+| **Descripción**         | El sistema debe calcular los intereses y adeudos utilizando correctamente la tasa registrada y los días transcurridos desde el último pago.             |
+| **Métrica**             | El resultado calculado debe coincidir con el cálculo manual de referencia en el 100% de los casos de prueba establecidos.                               |
+| **Origen**              | Entrevista de elicitación.                                                                                                                              |
+| **Prioridad**           | Imprescindible                                                                                                                                          |
+| **Por qué importa**     | Actualmente los intereses se calculan manualmente y pueden presentarse errores. Un cálculo incorrecto puede afectar directamente el adeudo del cliente. |
+| **Afecta a**            | RF-003, RF-004, RF-005, RF-006                                                                                                                          |
+
+### RNF-INT-001 · Conservación de información
+
+| Campo                   | Contenido                                                                                                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Atributo de calidad** | Integridad de datos                                                                                                                                           |
+| **Descripción**         | El sistema debe conservar los registros de clientes, préstamos, garantías y pagos sin permitir que una modificación elimine el historial de cambios asociado. |
+| **Métrica**             | El 100% de las modificaciones realizadas sobre registros deben conservar usuario y fecha de modificación en el historial.                                     |
+| **Origen**              | Entrevista de elicitación.                                                                                                                                    |
+| **Prioridad**           | Imprescindible                                                                                                                                                |
+| **Por qué importa**     | El Owner expresó la necesidad de evitar la pérdida o modificación incorrecta de información y poder revisar los cambios realizados por los usuarios.          |
+| **Afecta a**            | RF-001, RF-002, RF-003, RF-006, RF-007, RF-008                                                                                                                |
+
+---
+
+# 5. Casos de uso
+
+Los casos de uso se relacionan con los requisitos funcionales que representan las principales operaciones del sistema.
+
+| ID    | Caso de uso                           | Actor principal  | Requisitos relacionados |
+| ----- | ------------------------------------- | ---------------- | ----------------------- |
+| CU-01 | Registrar cliente                     | Employee         | RF-001                  |
+| CU-02 | Registrar préstamo y garantía         | Employee         | RF-002                  |
+| CU-03 | Registrar pago                        | Employee         | RF-003                  |
+| CU-04 | Consultar intereses y adeudo          | Employee         | RF-004, RF-005          |
+| CU-05 | Consultar empeños vencidos            | Owner / Employee | RF-006                  |
+| CU-06 | Autorizar operación mayor a $50,000   | Owner            | RF-007                  |
+| CU-07 | Consultar historial de modificaciones | Owner            | RF-008                  |
+
+---
+
+# 6. Trazabilidad
+
+| Requisito   | Origen                           | Caso de uso                                 | Elemento del prototipo           |
+| ----------- | -------------------------------- | ------------------------------------------- | -------------------------------- |
+| RF-001      | Visión del producto + entrevista | CU-01 Registrar cliente                     | Pantalla de clientes             |
+| RF-002      | Visión del producto + entrevista | CU-02 Registrar préstamo y garantía         | Pantalla de nuevo empeño         |
+| RF-003      | Visión del producto + entrevista | CU-03 Registrar pago                        | Pantalla de pagos                |
+| RF-004      | Entrevista                       | CU-04 Consultar intereses y adeudo          | Pantalla de detalle del empeño   |
+| RF-005      | Visión del producto + entrevista | CU-04 Consultar intereses y adeudo          | Pantalla de detalle del empeño   |
+| RF-006      | Entrevista                       | CU-05 Consultar empeños vencidos            | Pantalla de empeños vencidos     |
+| RF-007      | Entrevista                       | CU-06 Autorizar operación mayor a $50,000   | Pantalla de autorización         |
+| RF-008      | Entrevista                       | CU-07 Consultar historial de modificaciones | Pantalla de historial            |
+| RNF-REN-001 | Tipo de sistema                  | CU-01, CU-02, CU-04, CU-05                  | Pantallas de consulta            |
+| RNF-SEG-001 | Entrevista                       | CU-01 a CU-07                               | Pantalla de inicio de sesión     |
+| RNF-USA-001 | Entrevista                       | CU-01, CU-02, CU-03, CU-04                  | Interfaz de registro y consulta  |
+| RNF-EXA-001 | Entrevista                       | CU-04                                       | Pantalla de cálculo de intereses |
+| RNF-INT-001 | Entrevista                       | CU-01, CU-02, CU-03, CU-06, CU-07           | Pantalla de historial            |
+
+---
+
+# 7. Registro de cambios
+
+| Fecha      | Requisito                 | Qué cambió                                                                                                          | Por qué                                                                                               |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 28/09/2026 | RF-001 a RF-008           | Se documentaron los requisitos funcionales con descripción, origen, prioridad, criterio de aceptación y relaciones. | Integrar la información de la Visión del Producto y la entrevista en la especificación de requisitos. |
+| 28/09/2026 | RNF-REN-001 a RNF-INT-001 | Se definieron requisitos no funcionales con métricas verificables.                                                  | Cumplir con la guía de redacción y establecer criterios medibles de calidad.                          |
+| 28/09/2026 | RF-007                    | Se estableció la autorización del Owner para operaciones mayores a $50,000.                                         | Regla identificada durante la entrevista.                                                             |
+| 28/09/2026 | RF-008                    | Se incorporó el historial de modificaciones.                                                                        | Necesidad identificada durante la entrevista para proteger la información y revisar cambios.          |
+
+---
+
+## Revisión antes de entregar
+
+* [x] Todos los requisitos tienen identificador único.
+* [x] Cada requisito expresa una sola idea.
+* [x] Cada requisito funcional tiene un criterio de aceptación comprobable.
+* [x] Cada requisito no funcional tiene una métrica.
+* [x] El campo Origen distingue información proveniente de la Visión, entrevista o derivada del tipo de sistema.
+* [x] Se incluyeron requisitos de rendimiento, seguridad, usabilidad, exactitud e integridad de datos.
+* [x] Los requisitos se mantienen dentro del alcance declarado.
+* [x] Se incluyó la tabla de trazabilidad.
+* [x] Se incluyó el registro de cambios.
+* [x] Se eliminaron los ejemplos de la plantilla.
+* [ ] Revisión por la dupla: pendiente de realizar y registrar.
