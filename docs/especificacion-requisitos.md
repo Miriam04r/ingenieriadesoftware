@@ -1,15 +1,14 @@
 # Especificación de requisitos
 
 **Sistema:** EmpeñoControl  
-**Autor:** Miriam Gómez Mariscal  
-**Versión:** 1.0  
+**Autor:** Miriam Gómez Mariscal    
 **Fecha de la última actualización:** 29/09/2026
 
 ---
 
 ## 1. Propósito y alcance
 
-**Propósito del documento:** Este documento define los requisitos funcionales y no funcionales de EmpeñoControl, un sistema que ayudará a administrar una casa de empeño, permitiendo registrar clientes, préstamos y objetos dejados como garantía. También llevará el control de pagos, calculará los intereses y mostrará qué clientes tienen pagos pendientes, cuánto tiempo llevan sin pagar y qué empeños ya están vencidos. Está dirigido al Owner y al Employee de la casa de empeño, y a quienes diseñarán, construirán y probarán el sistema.
+**Propósito del documento:** Este documento define los requisitos del sistema EmpeñoControl, tomando como base la Visión del producto y la información obtenida en la entrevista realizada al Owner de la casa de empeño. Su propósito es establecer qué debe hacer el sistema, quiénes lo utilizarán, qué características debe tener y qué aspectos quedan fuera del alcance.
 
 **Alcance del sistema:**
 
@@ -33,17 +32,17 @@
 
 | Usuario  | Qué hace hoy sin el sistema | Qué espera del sistema |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Owner    | Administra la casa de empeño desde hace varios años. Cada mañana revisa los empeños activos, los pagos realizados, las deudas activas y si algún empeño ya expiró para separarlo. Atiende clientes según lo que necesiten y puede registrar empeños. Autoriza los préstamos mayores a $50,000. Lleva todo a mano en libretas y fichas, y calcula los intereses manualmente. Para saber qué clientes tienen pagos pendientes y cuánto tiempo llevan sin pagar, revisa los registros de las libretas. | Supervisar clientes, préstamos, pagos y **ganancias**. Contar con un registro de préstamos, empeños y clientes, y que los intereses se calculen automáticamente. Le preocupa perder información o que un error sea irreversible. |
-| Employee | Atiende a los clientes, registra los empeños y recibe los pagos en efectivo, anotándolos a mano en una libreta y en fichas. Cuando un préstamo supera los $50,000, necesita la autorización del Owner antes de completarlo. | Registrar datos y calcular intereses automáticamente. Le preocupa que el sistema sea difícil de usar o registrar datos incorrectos. |
+| Owner    | Administra la casa de empeño desde hace varios años. Cada mañana revisa los empeños activos, los pagos realizados, las deudas activas y si algún empeño ya expiró para separarlo. Atiende clientes según lo que necesiten y puede registrar empeños. Lleva todo a mano en libretas y fichas, y calcula los intereses manualmente. Para saber qué clientes tienen pagos pendientes y cuánto tiempo llevan sin pagar, revisa los registros de las libretas. | Supervisar clientes, préstamos, pagos y ganancias. Contar con un registro de préstamos, empeños y clientes, y que los intereses se calculen automáticamente. Le preocupa perder información o que un error sea irreversible. |
+| Employee | Atiende a los clientes, registra los empeños y recibe los pagos en efectivo, anotándolos a mano en una libreta y en fichas. | Registrar datos y calcular intereses automáticamente. Le preocupa que el sistema sea difícil de usar o registrar datos incorrectos. |
 
-**Cambios respecto a la Visión del producto (surgidos de la entrevista del 22 de septiembre):**
+**Cambios a partir de la revisión de la dupla**
 
-- **El registro y la administración de los empeños los pueden realizar tanto el Owner como el Employee, no solo el Owner.**
-- **Cuando un cliente deja de regresar, su empeño no queda simplemente como pendiente: se registra como inactivo y se pone a la venta. Esto cierra uno de los huecos de la Visión.**
-- **Cuando se registra incorrectamente un dato, hoy se revisa toda la información del préstamo para encontrar el error. Esto cierra el otro hueco de la Visión y confirma la necesidad del historial de modificaciones.**
-- **El seguimiento de deudas y empeños vencidos es una tarea diaria del Owner, por lo que el control de estos datos es más importante de lo que se había considerado.**
+- El registro y la administración de los empeños los pueden realizar tanto el Owner como el Employee, no solo el Owner.
+- Cuando un cliente deja de regresar, su empeño no queda simplemente como pendiente: se registra como inactivo y se pone a la venta. Esto cierra uno de los huecos de la Visión.
+- Cuando se registra incorrectamente un dato, hoy se revisa toda la información del préstamo para encontrar el error. Esto cierra el otro hueco de la Visión y confirma la necesidad del historial de modificaciones.
+- El seguimiento de deudas y empeños vencidos es una tarea diaria del Owner, por lo que el control de estos datos es más importante de lo que se había considerado.
 
-**Conflictos identificados entre usuarios:** El Employee puede querer realizar un préstamo de cualquier cantidad para agilizar la atención al cliente, mientras que el Owner quiere tener mayor control sobre los préstamos de cantidades altas. Por ello, cuando un préstamo supere los $50,000 pesos, el sistema requerirá la autorización del Owner antes de completar la operación (ver RF-006 y RNF-SEG-001).
+**Conflictos identificados entre usuarios:** El Employee puede querer realizar un préstamo de cualquier cantidad para agilizar la atención al cliente, mientras que el Owner quiere tener mayor control sobre los préstamos de cantidades altas. Por ello, cuando un préstamo supere los $50,000 pesos, el sistema requerirá la autorización del Owner antes de completar la operación.
 
 ---
 
@@ -59,15 +58,11 @@
 | RF-004     | Registro manual de pago de interés            | Imprescindible | Visión (fuera del alcance); entrevista del 22 de septiembre           |
 | RF-005     | Cálculo de interés                            | Imprescindible | Visión (alcance y reglas de negocio); entrevista del 22 de septiembre |
 | RF-006     | Autorización de préstamos mayores a $50,000   | Imprescindible | Visión (conflicto entre usuarios); entrevista del 22 de septiembre    |
-| RF-007     | Marcado de empeños vencidos                   | Imprescindible | Visión (alcance y reglas de negocio); entrevista del 22 de septiembre |
-| RF-008     | Orden de empeños vencidos                     | Importante     | Visión (alcance)                                                      |
-| RF-009     | Consulta de pagos pendientes                  | Importante     | Visión (descripción); entrevista del 22 de septiembre                 |
-| RF-010     | Balance de dinero prestado                    | Importante     | Visión (alcance)                                                      |
-| RF-011     | Balance de dinero generado                    | Importante     | Visión (alcance)                                                      |
-| RF-012     | Historial de modificaciones                   | Imprescindible | Visión (alcance); entrevista del 22 de septiembre                     |
-| RF-013     | Corrección de registros                       | Importante     | Visión (huecos); entrevista del 22 de septiembre                      |
-| **RF-014** | **Registro de empeño inactivo y a la venta**  | **Importante** | **Entrevista del 22 de septiembre**                                   |
-| **RF-015** | **Separación de empeños activos e inactivos** | **Importante** | **Entrevista del 22 de septiembre**                                   |
+| RF-007     | Señalización de empeños vencidos                   | Imprescindible | Visión (alcance y reglas de negocio); entrevista del 22 de septiembre |
+| RF-008     | Balance de dinero prestado                    | Importante     | Visión (alcance)                                                      |
+| RF-009    | Balance de dinero generado                    | Importante     | Visión (alcance)                                                      |
+| RF-010    | Historial de modificaciones                   | Imprescindible | Visión (alcance); entrevista del 22 de septiembre                     |
+| RF-011 | Clasificación de estado de los empeños | Importante | Entrevista del 22 de septiembre                                  |
 
 ### 3.2 Fichas
 
@@ -75,17 +70,17 @@
 
 | Campo                  | Contenido                                                                                                                                                                               |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema registra un cliente con su **nombre completo y teléfono de contacto**.                                                                                                       |
+| Descripción            | El sistema registra un cliente con su nombre completo, teléfono, dirección y número de identificación oficial.                                                                                                       |
 | Origen                 | Visión del producto (alcance: registro manual de cada cliente); entrevista del 22 de septiembre, sección Proceso actual.                                                                |
 | Prioridad              | Imprescindible                                                                                                                                                                          |
-| Criterio de aceptación | Al guardar un cliente con nombre y teléfono, este aparece en la lista de clientes con los datos capturados. Si falta alguno de los dos datos, el sistema no guarda y señala cuál falta. |
+| Criterio de aceptación | Al guardar un cliente, este aparece en la lista de clientes con los datos capturados. Si falta alguno de los datos, el sistema no guarda y señala cuál falta. |
 | Relacionado con        | RF-002, RF-003, RNF-CON-003                                                                                                                                                             |
 
 #### RF-002 · Registro de empeño
 
 | Campo                  | Contenido                                                                                                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema registra un empeño con el cliente, la descripción del objeto dejado como garantía, el monto del préstamo, **la tasa de interés** y la fecha del empeño.          |
+| Descripción            | El sistema registra un empeño con el cliente, la descripción del objeto dejado como garantía, el monto del préstamo, la tasa de interés y la fecha del empeño.          |
 | Origen                 | Visión del producto (alcance: registro manual de cada empeño); entrevista del 22 de septiembre, sección Proceso actual.                                                     |
 | Prioridad              | Imprescindible                                                                                                                                                              |
 | Criterio de aceptación | Al guardar un empeño con los cinco datos, este aparece como activo en la lista de empeños con la fecha correcta. Si falta alguno, el sistema no guarda y señala cuál falta. |
@@ -131,37 +126,16 @@
 | Criterio de aceptación | Al registrar un préstamo de $50,001, el sistema no lo completa y lo deja pendiente de autorización; cuando el Owner lo autoriza, el préstamo se completa. Un préstamo de $50,000 o menos se completa sin autorización. |
 | Relacionado con        | RF-002, RNF-SEG-001                                                                                                                                                                                                    |
 
-#### RF-007 · Marcado de empeños vencidos
+#### RF-007 · Señalización de empeños vencidos
 
 | Campo                  | Contenido                                                                                                                                                                 |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema marca en rojo un empeño cuando han pasado más de tres meses desde su último pago de interés **(o desde su fecha de empeño, si nunca ha tenido un pago)**.      |
+| Descripción            | El sistema marca en rojo un empeño cuando han pasado más de tres meses desde su último pago de interés (o desde su fecha de empeño, si nunca ha tenido un pago) y los manda al principio de la lista.      |
 | Origen                 | Visión del producto (alcance y regla de negocio 2); entrevista del 22 de septiembre, sección Dolores y ficha de dominio.                                                  |
 | Prioridad              | Imprescindible                                                                                                                                                            |
 | Criterio de aceptación | Si el último pago fue el 15 de mayo, el 15 de agosto el empeño no aparece en rojo y el 16 de agosto sí. Si no se registra ningún pago nuevo, el empeño permanece en rojo. |
 | Relacionado con        | RF-004, RF-008, RF-009, RF-014                                                                                                                                            |
-
-#### RF-008 · Orden de empeños vencidos
-
-| Campo                  | Contenido                                                                                                                                                             |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema muestra los empeños vencidos al inicio de la lista, con el más antiguo **(el que lleva más tiempo sin pago)** en la primera posición.                      |
-| Origen                 | Visión del producto (alcance).                                                                                                                                        |
-| Prioridad              | Importante                                                                                                                                                            |
-| Criterio de aceptación | Con tres empeños vencidos y uno no vencido, la lista muestra primero los tres vencidos del que lleva más tiempo sin pago al que lleva menos, y después el no vencido. |
-| Relacionado con        | RF-007, RF-015                                                                                                                                                        |
-
-#### RF-009 · Consulta de pagos pendientes
-
-| Campo                  | Contenido                                                                                                                                                                                                 |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema muestra los clientes con pagos pendientes y los días transcurridos desde su último pago registrado.                                                                                            |
-| Origen                 | Visión del producto (descripción del sistema); entrevista del 22 de septiembre, secciones Proceso actual y Dolores.                                                                                       |
-| Prioridad              | Importante                                                                                                                                                                                                |
-| Criterio de aceptación | Para un cliente cuyo último pago se registró hace 45 días, el sistema lo muestra en la lista de pagos pendientes con "45 días" sin pago. Un cliente con un pago registrado hoy no aparece como pendiente. |
-| Relacionado con        | RF-004, RF-007                                                                                                                                                                                            |
-
-#### RF-010 · Balance de dinero prestado
+#### RF-008 · Balance de dinero prestado
 
 | Campo                  | Contenido                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------- |
@@ -171,7 +145,7 @@
 | Criterio de aceptación | Con tres empeños activos de $1,000, $2,000 y $3,000, el balance muestra $6,000 de dinero prestado. |
 | Relacionado con        | RF-002, RF-015, RNF-CON-002                                                                        |
 
-#### RF-011 · Balance de dinero generado
+#### RF-009 · Balance de dinero generado
 
 | Campo                  | Contenido                                                                                             |
 | ---------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -181,45 +155,25 @@
 | Criterio de aceptación | Después de registrar dos pagos de interés de $100 y $150, el balance muestra $250 de dinero generado. |
 | Relacionado con        | RF-004, RF-005, RNF-CON-001, RNF-CON-002                                                              |
 
-#### RF-012 · Historial de modificaciones
+#### RF-010 · Historial de modificaciones
 
 | Campo                  | Contenido                                                                                                                                                   |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | El sistema registra cada modificación hecha a un cliente, préstamo o pago con el valor anterior, el valor nuevo, la fecha **y el usuario que la realizó**.  |
+| Descripción            | El sistema registra cada modificación hecha a un cliente, préstamo o pago con el valor anterior, el valor nuevo, la fecha y el usuario que la realizó.  |
 | Origen                 | Visión del producto (alcance); entrevista del 22 de septiembre, sección Excepciones.                                                                        |
 | Prioridad              | Imprescindible                                                                                                                                              |
 | Criterio de aceptación | Al cambiar el monto de un pago de $500 a $600, el historial muestra una entrada con $500 como valor anterior, $600 como valor nuevo, la fecha y el usuario. |
 | Relacionado con        | RF-013, RNF-SEG-002                                                                                                                                         |
 
-#### RF-013 · Corrección de registros
-
-| Campo                  | Contenido                                                                                                                                                                |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Descripción            | El sistema permite corregir un cliente, préstamo o pago conservando consultable la información anterior.                                                                 |
-| Origen                 | Visión del producto (huecos importantes); entrevista del 22 de septiembre, sección Excepciones.                                                                          |
-| Prioridad              | Importante                                                                                                                                                               |
-| Criterio de aceptación | Después de corregir un registro, este muestra el valor corregido y el historial permite consultar el valor original sin revisar el resto de la información del préstamo. |
-| Relacionado con        | RF-012, RNF-SEG-002                                                                                                                                                      |
-
-#### **RF-014 · Registro de empeño inactivo y a la venta**
+#### **RF-011 · Clasificación de estado de los empeños**
 
 | Campo                  | Contenido                                                                                                                                         |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | **El sistema permite marcar un empeño como inactivo y a la venta cuando el cliente deja de acudir.**                                              |
-| Origen                 | **Entrevista del 22 de septiembre, sección Excepciones.**                                                                                         |
-| Prioridad              | **Importante**                                                                                                                                    |
-| Criterio de aceptación | **Al marcar un empeño como inactivo y a la venta, su estado cambia, deja de aparecer en la lista de empeños activos y no se marca como vencido.** |
-| Relacionado con        | **RF-007, RF-015, RNF-CON-003**                                                                                                                   |
-
-#### **RF-015 · Separación de empeños activos e inactivos**
-
-| Campo                  | Contenido                                                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Descripción            | **El sistema muestra los empeños activos y los inactivos en listas separadas.**                                             |
-| Origen                 | **Entrevista del 22 de septiembre, sección Contexto (separar los empeños expirados) y sección Excepciones.**                |
-| Prioridad              | **Importante**                                                                                                              |
-| Criterio de aceptación | **Después de marcar un empeño como inactivo, este aparece solo en la lista de inactivos y ya no aparece en la de activos.** |
-| Relacionado con        | **RF-008, RF-010, RF-014**                                                                                                  |
+| Descripción            | El sistema permite marcar un empeño como inactivo cuando se vence y vendido cuando es comprado por alguien más                                             |
+| Origen                 | Entrevista del 22 de septiembre, sección Excepciones.                                                                                        |
+| Prioridad              | Importante                                                                                                                                   |
+| Criterio de aceptación | Al marcar un empeño como inactivo o vendido, el sistema actualiza correctamente su estado en la lista de empeños. |
+| Relacionado con        | RF-007, RF-015, RNF-CON-003                                                                                                                   |
 
 ---
 
@@ -229,12 +183,12 @@
 
 | ID              | Atributo                       | Nombre                                     | Prioridad      | Origen                                                                                    |
 | --------------- | ------------------------------ | ------------------------------------------ | -------------- | ----------------------------------------------------------------------------------------- |
-| RNF-CON-001     | Confiabilidad (exactitud)      | Exactitud del cálculo de interés           | Imprescindible | Visión (atributos de calidad); entrevista del 22 de septiembre                            |
-| RNF-CON-002     | Confiabilidad (integridad)     | Consistencia de los balances               | Imprescindible | Visión (atributos de calidad)                                                             |
-| **RNF-CON-003** | **Confiabilidad (integridad)** | **Conservación de registros**              | **Importante** | **Entrevista del 22 de septiembre (ficha de dominio)**                                    |
+| RNF-CON-001     | Exactitud     | Exactitud del cálculo de interés           | Imprescindible | Visión (atributos de calidad); entrevista del 22 de septiembre                            |
+| RNF-CON-002     | Integridad     | Consistencia de los balances               | Imprescindible | Visión (atributos de calidad)                                                             |
+| RNF-CON-003 | Integridad| Conservación de registros              | Importante | Entrevista del 22 de septiembre (ficha de dominio)                                  |
 | RNF-SEG-001     | Seguridad                      | Permisos por rol                           | Imprescindible | Visión (atributos de calidad y conflicto entre usuarios); entrevista del 22 de septiembre |
 | RNF-SEG-002     | Seguridad                      | Inalterabilidad del historial              | Imprescindible | Visión (atributos de calidad y usuarios)                                                  |
-| **RNF-USA-001** | **Usabilidad**                 | **Facilidad de registro para el Employee** | **Importante** | **Visión (usuarios)**                                                                     |
+| RNF-USA-001 | Usabilidad                | Facilidad de registro para el Employee | Importante | Visión (usuarios)                                                                     |
 
 ### 4.2 Fichas
 
@@ -244,8 +198,8 @@
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Atributo de calidad | Confiabilidad (exactitud)                                                                                                                                                                                                    |
 | Descripción         | El sistema calcula el interés de cada empeño con una diferencia de $0.00 pesos respecto al cálculo de verificación.                                                                                                          |
-| Métrica             | **Diferencia en pesos entre el interés calculado por el sistema y el cálculo de verificación hecho a mano, medida en 20 empeños de prueba con distinto número de días transcurridos. El valor esperado es $0.00 en los 20.** |
-| Origen              | Visión del producto (atributo Exactitud); entrevista del 22 de septiembre, sección Dolores (errores en los cálculos manuales). **La métrica es supuesto propio.**                                                            |
+| Métrica             | Diferencia en pesos entre el interés calculado por el sistema y el cálculo de verificación hecho a mano, medida en 20 empeños de prueba con distinto número de días transcurridos. El valor esperado es $0.00 en los 20. |
+| Origen              | Visión del producto (atributo Exactitud); entrevista del 22 de septiembre, sección Dolores (errores en los cálculos manuales). La métrica es supuesto propio.                                                            |
 | Prioridad           | Imprescindible                                                                                                                                                                                                               |
 | Por qué importa     | Si el cálculo es incorrecto, se podrían cobrar cantidades incorrectas y generar pérdidas de dinero o problemas con los clientes.                                                                                             |
 | Afecta a            | RF-005, RF-011                                                                                                                                                                                                               |
@@ -254,9 +208,9 @@
 
 | Campo                  | Contenido                                                                                                                                                                                               |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Atributo de calidad    | Confiabilidad (integridad de los datos)                                                                                                                                                                 |
+| Atributo de calidad    | Integridad                                                                                                                                                                 |
 | Descripción            | El dinero prestado y el dinero generado que muestra el sistema coinciden con la suma de los préstamos y pagos registrados.                                                                              |
-| Métrica                | **Diferencia en pesos entre cada balance mostrado y la suma calculada a mano de los registros, después de 20 operaciones de prueba entre registros, pagos y correcciones. El valor esperado es $0.00.** |
+| Métrica                | Diferencia en pesos entre cada balance mostrado y la suma calculada a mano de los registros, después de 20 operaciones de prueba entre registros, pagos y correcciones. El valor esperado es $0.00. |
 | Origen                 | Visión del producto (atributo Integridad de los datos). **La métrica es supuesto propio.**                                                                                                              |
 | Prioridad              | Imprescindible                                                                                                                                                                                          |
 | Por qué importa        | Si los balances no coinciden con los registros, habría diferencias entre el dinero registrado y el dinero real.                                                                                         |
@@ -266,13 +220,13 @@
 
 | Campo                  | Contenido                                                                                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Atributo de calidad    | **Confiabilidad (integridad de los datos)**                                                                                                                                                        |
-| Descripción            | **El sistema conserva los registros de clientes, préstamos y pagos aunque el cliente deje de acudir al negocio.**                                                                                  |
-| Métrica                | **Porcentaje de registros de un cliente que siguen consultables después de simular 12 meses sin actividad de ese cliente. El valor esperado es 100%, con 0 registros eliminados automáticamente.** |
-| Origen                 | **Guion de entrevista del 22 de septiembre, ficha de dominio (regla de conservación de información). La métrica es supuesto propio.**                                                              |
-| Prioridad              | **Importante**                                                                                                                                                                                     |
-| Por qué importa        | **Si se pierden los registros de un cliente que dejó de acudir, se pierde el respaldo de sus préstamos y pagos anteriores.**                                                                       |
-| Afecta a               | **RF-001, RF-002, RF-004, RF-014**                                                                                                                                                                 |
+| Atributo de calidad    | Integridad                                                                                                                                                        |
+| Descripción            | El sistema conserva los registros de clientes, préstamos y pagos aunque el cliente deje de acudir al negocio.                                                                                 |
+| Métrica                | Porcentaje de registros de un cliente que siguen consultables después de simular 12 meses sin actividad de ese cliente. El valor esperado es 100%, con 0 registros eliminados automáticamente. |
+| Origen                 | Guion de entrevista del 22 de septiembre, ficha de dominio (regla de conservación de información). La métrica es supuesto propio.                                                              |
+| Prioridad              | Importante                                                                                                                                                                                     |
+| Por qué importa        | Si se pierden los registros de un cliente que dejó de acudir, se pierde el respaldo de sus préstamos y pagos anteriores.                                                                   |
+| Afecta a               | RF-001, RF-002, RF-004, RF-014                                                                                                                                                                 |
 
 #### RNF-SEG-001 · Permisos por rol
 
@@ -280,8 +234,8 @@
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Atributo de calidad    | Seguridad                                                                                                                                                                               |
 | Descripción            | El sistema restringe las funciones reservadas al Owner para que el Employee no pueda ejecutarlas.                                                                                       |
-| Métrica                | **Porcentaje de intentos de un usuario con rol Employee por autorizar un préstamo mayor a $50,000 que el sistema rechaza, medido en 10 intentos de prueba. El valor esperado es 100%.** |
-| Origen                 | Visión del producto (atributo Seguridad y conflicto entre usuarios); entrevista del 22 de septiembre, sección Excepciones. **La métrica es supuesto propio.**                           |
+| Métrica                | Porcentaje de intentos de un usuario con rol Employee por autorizar un préstamo mayor a $50,000 que el sistema rechaza, medido en 10 intentos de prueba. El valor esperado es 100%. |
+| Origen                 | Visión del producto (atributo Seguridad y conflicto entre usuarios); entrevista del 22 de septiembre, sección Excepciones. La métrica es supuesto propio.                           |
 | Prioridad              | Imprescindible                                                                                                                                                                          |
 | Por qué importa        | Si un empleado pudiera ejecutar funciones del Owner, podría modificar información o autorizar préstamos que no debería.                                                                 |
 | Afecta a               | RF-006                                                                                                                                                                                  |
@@ -292,8 +246,8 @@
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Atributo de calidad    | Seguridad                                                                                                                                                     |
 | Descripción            | Ningún usuario puede modificar ni eliminar las entradas del historial de modificaciones.                                                                      |
-| Métrica                | **Número de intentos exitosos de modificar o eliminar una entrada del historial, medido en 10 intentos de prueba con cada rol. El valor esperado es 0.**      |
-| Origen                 | Visión del producto (atributo Seguridad y preocupación del Owner de que un error sea irreversible). **La métrica es supuesto propio.**                        |
+| Métrica                | Número de intentos exitosos de modificar o eliminar una entrada del historial, medido en 10 intentos de prueba con cada rol. El valor esperado es 0.      |
+| Origen                 | Visión del producto (atributo Seguridad y preocupación del Owner de que un error sea irreversible). La métrica es supuesto propio.                        |
 | Prioridad              | Imprescindible                                                                                                                                                |
 | Por qué importa        | Si el historial se pudiera alterar, un error o una modificación indebida podría quedar sin rastro y no se podría corregir sin perder la información anterior. |
 | Afecta a               | RF-012, RF-013                                                                                                                                                |
@@ -302,13 +256,13 @@
 
 | Campo                  | Contenido                                                                                                                                                                        |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Atributo de calidad    | **Usabilidad**                                                                                                                                                                   |
-| Descripción            | **Un Employee sin capacitación previa registra un cliente nuevo y su empeño en menos de cinco minutos.**                                                                         |
-| Métrica                | **Tiempo entre abrir el registro de cliente y guardar su empeño, medido en la primera prueba de cada Employee sin capacitación previa. El valor esperado es menor a 5 minutos.** |
-| Origen                 | **Visión del producto (preocupación del Employee: que sea difícil de usar). La métrica es supuesto propio.**                                                                     |
-| Prioridad              | **Importante**                                                                                                                                                                   |
-| Por qué importa        | **Si el sistema es difícil de usar, el Employee puede registrar datos incorrectos o volver a las libretas.**                                                                     |
-| Afecta a               | **RF-001, RF-002**                                                                                                                                                               |
+| Atributo de calidad    | Usabilidad                                                                                                                                                                 |
+| Descripción            | Un Employee sin capacitación previa registra un cliente nuevo y su empeño en menos de cinco minutos.                                                                        |
+| Métrica                | Tiempo entre abrir el registro de cliente y guardar su empeño, medido en la primera prueba de cada Employee sin capacitación previa. El valor esperado es menor a 5 minutos. |
+| Origen                 | Visión del producto (preocupación del Employee: que sea difícil de usar). La métrica es supuesto propio.                                                                     |
+| Prioridad              | Importante                                                                                                                                                                   |
+| Por qué importa        | Si el sistema es difícil de usar, el Employee puede registrar datos incorrectos o volver a las libretas.                                                                    |
+| Afecta a               | RF-001, RF-002                                                                                                                                                              |
 
 ---
 
@@ -333,10 +287,6 @@ Pendiente: se trabajan en la semana 7, después de la entrevista. Cada caso de u
 | RF-009          | Visión (descripción); entrevista del 22 de septiembre, Dolores                         | Por definir (semana 7)     | Por definir            |
 | RF-010          | Visión (alcance)                                                                       | Por definir (semana 7)     | Por definir            |
 | RF-011          | Visión (alcance)                                                                       | Por definir (semana 7)     | Por definir            |
-| RF-012          | Visión (alcance); entrevista del 22 de septiembre, Excepciones                         | Por definir (semana 7)     | Por definir            |
-| RF-013          | Visión (huecos); entrevista del 22 de septiembre, Excepciones                          | Por definir (semana 7)     | Por definir            |
-| **RF-014**      | **Entrevista del 22 de septiembre, Excepciones**                                       | **Por definir (semana 7)** | **Por definir**        |
-| **RF-015**      | **Entrevista del 22 de septiembre, Contexto y Excepciones**                            | **Por definir (semana 7)** | **Por definir**        |
 | RNF-CON-001     | Visión (atributos de calidad); entrevista del 22 de septiembre, Dolores                | Por definir (semana 7)     | Por definir            |
 | RNF-CON-002     | Visión (atributos de calidad)                                                          | Por definir (semana 7)     | Por definir            |
 | **RNF-CON-003** | **Guion de entrevista del 22 de septiembre, ficha de dominio**                         | **Por definir (semana 7)** | **Por definir**        |
