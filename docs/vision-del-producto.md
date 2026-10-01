@@ -79,6 +79,7 @@
 |Exactitud | El sistema debe realizar correctamente los cálculos de intereses|Se podrían cobrar cantidades incorrectas y generar pérdidas de dinero o problemas con los clientes |
 |Seguridad |La información de clientes, préstamos y dinero debe estar protegida y cada usuario debe tener permisos de acuerdo con su función. |Un empleado podría modificar información que no debería o se podría perder información importante|
 |Integridad de los datos |La información de los clientes, préstamos y pagos debe mantenerse correcta y consistente |Podrían existir registros duplicados, información incorrecta o diferencias entre el dinero registrado y el dinero real |
+|Usabilidad | El sistema debe ser fácil de entender y utilizar para que el Owner y el Employee puedan registrar y consultar información sin dificultad|Los usuarios podrían cometer errores, tardar más en realizar sus actividades o tener dificultades para usar el sistema|
 
 **Reglas de negocio que ya identifiqué:**
 
