@@ -401,7 +401,9 @@
 
 | Fecha      | Requisito | Qué cambió                    | Por qué         |
 | ---------- | --------- | ----------------------------- | --------------- |
-| 29/09/2026 | Todos     | Primera versión del documento | Entrega inicial |
+| 29/09/2026 | RF-004 | Se cambió la tabla de pagos por un pop-up | Se buscó que el registro de pagos fuera más rápido y fácil de usar |
+| 29/09/2026 | RF-010 | Se agregó el usuario que realizó cada modificación al historial | Se necesitó identificar quién realizó cada cambio para poder revisar errores |
+
 
 ---
 
