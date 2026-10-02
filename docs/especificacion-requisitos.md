@@ -407,7 +407,8 @@
 
 ---
 ## 8. Revisión de la dupla
-
+- La Visión asume que solo el empleado registra datos, pero en los casos de uso y la especificación se menciona que el dueño también lo hace
+- Los préstamos mayores a $50,000 quedan "pendientes" de autorización del dueño, pero no se aclara si el sistema le avisa de alguna forma o si él tiene que estar revisando manualmente a ver si hay algo nuevo
 
 ## Antes de entregar
 
