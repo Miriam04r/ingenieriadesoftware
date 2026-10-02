@@ -424,3 +424,6 @@
 - [ ] La tabla de trazabilidad está completa
 - [ ] Mi dupla revisó el documento y su revisión está registrada
 - [ ] Borré los ejemplos y las instrucciones en cursiva
+
+
+**Link de Figma** https://solar-mentor-15794640.figma.site/
