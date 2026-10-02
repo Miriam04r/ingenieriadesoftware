@@ -375,26 +375,25 @@
 
 ## 6. Trazabilidad
 
-| Requisito       | Origen                                                                                 | Caso de uso                | Elemento del prototipo |
-| --------------- | -------------------------------------------------------------------------------------- | -------------------------- | ---------------------- |
-| RF-001          | Visión (alcance); entrevista del 22 de septiembre, Proceso actual                      | Por definir (semana 7)     | Por definir            |
-| RF-002          | Visión (alcance); entrevista del 22 de septiembre, Proceso actual                      | Por definir (semana 7)     | Por definir            |
-| RF-003          | Visión (regla de negocio 3); ficha de dominio del guion del 22 de septiembre           | Por definir (semana 7)     | Por definir            |
-| RF-004          | Visión (fuera del alcance); entrevista del 22 de septiembre, Proceso actual            | Por definir (semana 7)     | Por definir            |
-| RF-005          | Visión (alcance, regla de negocio 1); entrevista del 22 de septiembre, Proceso actual  | Por definir (semana 7)     | Por definir            |
-| RF-006          | Visión (conflicto entre usuarios); entrevista del 22 de septiembre, Excepciones        | Por definir (semana 7)     | Por definir            |
-| RF-007          | Visión (alcance, regla de negocio 2); entrevista del 22 de septiembre, Dolores         | Por definir (semana 7)     | Por definir            |
-| RF-008          | Visión (alcance)                                                                       | Por definir (semana 7)     | Por definir            |
-| RF-009          | Visión (descripción); entrevista del 22 de septiembre, Dolores                         | Por definir (semana 7)     | Por definir            |
-| RF-010          | Visión (alcance)                                                                       | Por definir (semana 7)     | Por definir            |
-| RF-011          | Visión (alcance)                                                                       | Por definir (semana 7)     | Por definir            |
-| RNF-CON-001     | Visión (atributos de calidad); entrevista del 22 de septiembre, Dolores                | Por definir (semana 7)     | Por definir            |
-| RNF-CON-002     | Visión (atributos de calidad)                                                          | Por definir (semana 7)     | Por definir            |
-| **RNF-CON-003** | **Guion de entrevista del 22 de septiembre, ficha de dominio**                         | **Por definir (semana 7)** | **Por definir**        |
-| RNF-SEG-001     | Visión (atributos de calidad, conflicto); entrevista del 22 de septiembre, Excepciones | Por definir (semana 7)     | Por definir            |
-| RNF-SEG-002     | Visión (atributos de calidad, usuarios)                                                | Por definir (semana 7)     | Por definir            |
-| **RNF-USA-001** | **Visión (usuarios)**                                                                  | **Por definir (semana 7)** | **Por definir**        |
-
+| Requisito | Origen | Caso de uso | Elemento del prototipo |
+| :--- | :--- | :--- | :--- |
+| **RF-001** | Visión (alcance); entrevista del 22 de septiembre, Proceso actual | CU-01 Registrar un cliente | Formulario de registro de cliente |
+| **RF-002** | Visión (alcance); entrevista del 22 de septiembre, Proceso actual | CU-02 Registrar un empeño | Formulario de registro de empeño |
+| **RF-003** | Visión (regla de negocio 3); ficha de dominio del guion del 22 de septiembre | CU-02 Registrar un empeño | Vista del perfil del cliente / Lista de empeños |
+| **RF-004** | Visión (fuera del alcance); entrevista del 22 de septiembre, Proceso actual | CU-03 Registrar un pago de interés | Pop-up de registro de pagos |
+| **RF-005** | Visión (alcance, regla de negocio 1); entrevista del 22 de septiembre, Proceso actual | CU-04 Calcular el interés de un empeño | Pantalla de cálculo / Detalle del empeño |
+| **RF-006** | Visión (conflicto entre usuarios); entrevista del 22 de septiembre, Excepciones | CU-02 Registrar un empeño, CU-05 Autorizar un préstamo mayor a $50,000 | Lista de préstamos pendientes de autorización |
+| **RF-007** | Visión (alcance, regla de negocio 2); entrevista del 22 de septiembre, Dolores | CU-03 Registrar un pago de interés, CU-06 Consultar y gestionar empeños | Lista de empeños (filas marcadas en rojo) |
+| **RF-008** | Visión (alcance) | CU-07 Consultar el balance de dinero | Pantalla de balance general |
+| **RF-009** | Visión (descripción); entrevista del 22 de septiembre, Dolores | CU-03 Registrar un pago de interés, CU-07 Consultar el balance de dinero | Pantalla de balance general |
+| **RF-010** | Visión (alcance) | CU-08 Modificar un registro y consultar su historial | Pantalla de historial de modificaciones |
+| **RF-011** | Visión (alcance) | CU-03 Registrar un pago de interés, CU-06 Consultar y gestionar empeños | Lista de empeños / Selector de estado |
+| **RNF-CON-001** | Visión (atributos de calidad); entrevista del 22 de septiembre, Dolores | CU-04 Calcular el interés de un empeño | Pantalla de cálculo de interés (Lógica interna) |
+| **RNF-CON-002** | Visión (atributos de calidad) | CU-03 Registrar un pago de interés, CU-07 Consultar el balance de dinero | Pantalla de balance (Lógica interna) |
+| **RNF-CON-003** | Guion de entrevista del 22 de septiembre, ficha de dominio | CU-01, CU-02, CU-03, CU-06, CU-08 | Base de datos (Lógica de conservación) |
+| **RNF-SEG-001** | Visión (atributos de calidad, conflicto); entrevista del 22 de septiembre, Excepciones | CU-05 Autorizar un préstamo mayor a $50,000 | Control de acceso por rol (Permisos) |
+| **RNF-SEG-002** | Visión (atributos de calidad, usuarios) | CU-08 Modificar un registro y consultar su historial | Pantalla de historial (Vista de solo lectura) |
+| **RNF-USA-001** | Visión (usuarios) | CU-01 Registrar un cliente, CU-02 Registrar un empeño | Formularios de registro |
 ---
 
 ## 7. Registro de cambios
@@ -407,6 +406,8 @@
 
 
 ---
+## 8. Revisión de la dupla
+
 
 ## Antes de entregar
 
