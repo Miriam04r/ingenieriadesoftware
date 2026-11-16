@@ -1,0 +1,23 @@
+flowchart TD
+    web[App web]
+
+    subgraph api[API del sistema]
+        clientes[Clientes<br/>registro e informacion]
+        empenos[Empeños<br/>prestamos y garantias]
+        finanzas[Finanzas<br/>pagos y balances]
+    end
+
+    db[(Base de datos)]
+
+    web --> clientes
+    web --> empenos
+    web --> finanzas
+
+    empenos -->|asocia prestamo a persona especifica| clientes
+    finanzas -->|revisa prestamos y avisa de pago| empenos
+
+    clientes --> db
+    empenos --> db
+    finanzas --> db
+
+    style finanzas fill:#ff5d00,color:#fff
