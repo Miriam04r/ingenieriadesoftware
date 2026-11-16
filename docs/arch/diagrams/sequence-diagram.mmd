@@ -1,0 +1,18 @@
+sequenceDiagram
+    actor Emp as Employee
+    participant Web as App web
+    participant Usu as Usuario
+    participant E as Empeno
+
+    Emp->>Web: ingresa datos del cliente y garantía
+    Web->>+Usu: registrarEmpeno(datos)
+    
+    alt monto <= 50000
+        Usu->>+E: crearEmpeno(datos)
+        E-->>-Usu: empeño activo
+        Usu-->>Web: registro completado
+    else monto > 50000
+        Usu-->>-Web: error, requiere autorización del Owner
+    end
+    
+    Web-->>Emp: muestra resultado de la operación
