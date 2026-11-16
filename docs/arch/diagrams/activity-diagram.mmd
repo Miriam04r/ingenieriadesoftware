@@ -1,0 +1,23 @@
+flowchart TD
+    subgraph emp [Employee]
+        a1[Ingresa datos del préstamo y garantía]
+        a2[Recibe confirmación y finaliza atención]
+    end
+    
+    subgraph sis [Sistema]
+        b1[Verifica monto del préstamo]
+        b2{¿Monto > $50,000?}
+        b3[Registra empeño como activo]
+        b4[Deja préstamo pendiente de autorización]
+    end
+    
+    subgraph own [Owner]
+        c1[Consulta préstamos pendientes]
+        c2[Revisa y autoriza el préstamo]
+    end
+
+    a1 --> b1 --> b2
+    b2 -->|No| b3
+    b2 -->|Sí| b4
+    b4 --> c1 --> c2 --> b3
+    b3 --> a2
