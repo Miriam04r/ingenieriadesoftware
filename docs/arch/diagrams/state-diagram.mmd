@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Activo: registrar nuevo empeño
+    
+    Activo --> Vencido: pasan 3 meses sin pago / marcar en rojo
+    Vencido --> Activo: registrar pago de interés
+    
+    Vencido --> Inactivo: cliente no regresa [expira tiempo límite] / separar para venta
+    Inactivo --> Vendido: comprador adquiere el objeto / actualizar estado a vendido
+    
+    Activo --> [*]: cliente liquida el préstamo y recupera objeto
