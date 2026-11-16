@@ -54,4 +54,4 @@ Comparado con el módulo de registro de empeños que tomó aprox. 15 horas, inte
 
 ## Recomendación
 **Rechazar la Opción A y proponer la Opción B.** 
-*Justificación:* El alcance original y la visión del producto definen que este es un sistema de gestión manual para una casa de empeño pequeña. El costo de desarrollo y mantenimiento de una API oficial de mensajería supera el presupuesto de este tipo de negocio. La Opción B resuelve la necesidad de negocio (evitar que los clientes olviden su fecha) respetando la arquitectura, sin depender de sistemas externos y costaría menos de 8 horas implementar.
+Justificacion: El alcance original y la visión del producto definen que este es un sistema de gestión manual para una casa de empeño pequeña. El costo de desarrollo y mantenimiento de una API oficial de mensajería supera el presupuesto de este tipo de negocio. La Opción B resuelve la necesidad de negocio (evitar que los clientes olviden su fecha) respetando la arquitectura, sin depender de sistemas externos y costaría menos de 8 horas implementar.
