@@ -1,0 +1,46 @@
+classDiagram
+    class Cliente {
+        -nombreCompleto: string
+        -telefono: string
+        -direccion: string
+        -numeroIdentificacionOficial: string
+    }
+
+    class Empeno {
+        -descripcionObjeto: string
+        -montoPrestamo: float
+        -tasaInteres: float
+        -fechaEmpeno: date
+        -estado: string
+        +calcularInteres(): float
+        +actualizarEstado(): void
+    }
+
+    class Pago {
+        -fechaRealizacion: date
+        -montoPagado: float
+        +registrarPago(): void
+        +actualizarFechaUltimoPago(): void
+    }
+
+    class Usuario {
+        -nombre: string
+        -credenciales: string
+        -rol: string
+        +registrarCliente(): void
+        +registrarEmpeno(): void
+        +autorizarPrestamo(): void
+    }
+
+    class RegistroModificacion {
+        -valorAnterior: string
+        -valorNuevo: string
+        -fecha: date
+        -entidadAfectada: string
+    }
+
+    %% Relaciones con multiplicidad en ambos extremos
+    Cliente "1" -- "0..*" Empeno : realiza
+    Empeno "1" -- "0..*" Pago : recibe
+    Usuario "1" -- "0..*" RegistroModificacion : genera
+     
